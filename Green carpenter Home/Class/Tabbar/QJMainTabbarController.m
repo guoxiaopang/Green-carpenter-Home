@@ -1,0 +1,46 @@
+//
+//  QJMainTabbarController.m
+//  Green carpenter Home
+//
+//  Created by duoyi on 16/11/10.
+//  Copyright © 2016年 Green carpenter Home. All rights reserved.
+//
+
+#import "QJMainTabbarController.h"
+#import "QJMyViewController.h"
+#import "QJOrderViewController.h"
+
+@interface QJMainTabbarController ()
+
+@end
+
+@implementation QJMainTabbarController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self addController];
+}
+
+- (void)addController
+{
+    [self addController:[[QJOrderViewController alloc] init] title:@"订单" imageName:@"order" seletedImage:@"orderSelected"];
+    [self addController:[[QJMyViewController alloc] init] title:@"我的" imageName:@"mine" seletedImage:@"mineSelected"];
+
+}
+
+- (void)addController:(UIViewController *) controller title:(NSString *) title imageName:(NSString *)image seletedImage:(NSString *) seletedImage
+{
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    controller.tabBarItem.title = title;
+    
+    controller.tabBarItem.image = [UIImage imageNamed:image];
+    
+    controller.tabBarItem.selectedImage = [UIImage imageNamed:seletedImage];
+    
+    [self addChildViewController:nav];
+}
+
+@end
