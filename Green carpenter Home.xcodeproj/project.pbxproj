@@ -10,6 +10,8 @@
 		1388AFB0BD72FFC0BE57B072 /* libPods-Green carpenter Home.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD57F6F29CC5B41305EDE1 /* libPods-Green carpenter Home.a */; };
 		358310A11DD44ACC000B5CCB /* UIColor+QJColorHEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A01DD44ACC000B5CCB /* UIColor+QJColorHEX.m */; };
 		358310A41DD45E29000B5CCB /* QJOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A31DD45E29000B5CCB /* QJOrderCollectionViewCell.m */; };
+		358310A71DD465F1000B5CCB /* QJDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A61DD465F1000B5CCB /* QJDatePickerView.m */; };
+		358310AA1DD47ADD000B5CCB /* QJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A91DD47ADD000B5CCB /* QJNavigationController.m */; };
 		358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 358BE0C21DD4226500044A9F /* AppDelegate.m */; };
 		358BE0D11DD4226500044A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358BE0C31DD4226500044A9F /* Assets.xcassets */; };
 		358BE0D21DD4226500044A9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358BE0C41DD4226500044A9F /* LaunchScreen.storyboard */; };
@@ -26,6 +28,10 @@
 		358310A01DD44ACC000B5CCB /* UIColor+QJColorHEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+QJColorHEX.m"; sourceTree = "<group>"; };
 		358310A21DD45E29000B5CCB /* QJOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJOrderCollectionViewCell.h; sourceTree = "<group>"; };
 		358310A31DD45E29000B5CCB /* QJOrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJOrderCollectionViewCell.m; sourceTree = "<group>"; };
+		358310A51DD465F1000B5CCB /* QJDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJDatePickerView.h; sourceTree = "<group>"; };
+		358310A61DD465F1000B5CCB /* QJDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJDatePickerView.m; sourceTree = "<group>"; };
+		358310A81DD47ADD000B5CCB /* QJNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJNavigationController.h; sourceTree = "<group>"; };
+		358310A91DD47ADD000B5CCB /* QJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJNavigationController.m; sourceTree = "<group>"; };
 		358BE0A51DD4214F00044A9F /* Green carpenter Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Green carpenter Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		358BE0B91DD4214F00044A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358BE0C11DD4226500044A9F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -131,6 +137,8 @@
 				358BE0D51DD4229D00044A9F /* QJMainTabbarController.m */,
 				3583109F1DD44ACC000B5CCB /* UIColor+QJColorHEX.h */,
 				358310A01DD44ACC000B5CCB /* UIColor+QJColorHEX.m */,
+				358310A81DD47ADD000B5CCB /* QJNavigationController.h */,
+				358310A91DD47ADD000B5CCB /* QJNavigationController.m */,
 			);
 			name = Main;
 			path = Tabbar;
@@ -202,6 +210,8 @@
 				358BE0DE1DD442D000044A9F /* QJOrderTitleView.m */,
 				358310A21DD45E29000B5CCB /* QJOrderCollectionViewCell.h */,
 				358310A31DD45E29000B5CCB /* QJOrderCollectionViewCell.m */,
+				358310A51DD465F1000B5CCB /* QJDatePickerView.h */,
+				358310A61DD465F1000B5CCB /* QJDatePickerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,9 +347,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				358310AA1DD47ADD000B5CCB /* QJNavigationController.m in Sources */,
 				358310A11DD44ACC000B5CCB /* UIColor+QJColorHEX.m in Sources */,
 				358BE0D31DD4226500044A9F /* main.m in Sources */,
 				358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */,
+				358310A71DD465F1000B5CCB /* QJDatePickerView.m in Sources */,
 				358BE0DC1DD4233000044A9F /* QJOrderViewController.m in Sources */,
 				358310A41DD45E29000B5CCB /* QJOrderCollectionViewCell.m in Sources */,
 				358BE0DF1DD442D000044A9F /* QJOrderTitleView.m in Sources */,

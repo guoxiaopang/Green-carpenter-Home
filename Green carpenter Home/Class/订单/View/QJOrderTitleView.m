@@ -16,8 +16,11 @@ NSString *const orderNO = @"未接单";
 @interface QJOrderTitleView()
 
 @property (nonatomic, strong) UIButton *timeButton;
+@property (nonatomic, strong) UIImageView *timeImageView;
 @property (nonatomic, strong) UIButton *shopNameButton;
+@property (nonatomic, strong) UIImageView *shopImageView;
 @property (nonatomic, strong) UIButton *orderStateButton;
+@property (nonatomic, strong) UIImageView *orderImageView;
 @property (nonatomic, strong) UIView *lineView;
 
 @end
@@ -30,8 +33,11 @@ NSString *const orderNO = @"未接单";
     if (self)
     {
         [self addSubview:self.timeButton];
+        [self addSubview:self.timeImageView];
         [self addSubview:self.shopNameButton];
         [self addSubview:self.orderStateButton];
+        [self addSubview:self.shopImageView];
+        [self addSubview:self.orderImageView];
         [self addSubview:self.lineView];
         [self addLayout];
     }
@@ -39,6 +45,36 @@ NSString *const orderNO = @"未接单";
 }
 
 #pragma mark - 懒加载
+- (UIImageView *)orderImageView
+{
+    if (!_orderImageView)
+    {
+        _orderImageView = [[UIImageView alloc] init];
+        _orderImageView.image = [UIImage imageNamed:@"jiantou.png"];
+
+    }
+    return _orderImageView;
+}
+- (UIImageView *)shopImageView
+{
+    if (!_shopImageView)
+    {
+        _shopImageView = [[UIImageView alloc] init];
+        _shopImageView.image = [UIImage imageNamed:@"jiantou.png"];
+    }
+    return _shopImageView;
+}
+
+- (UIImageView *)timeImageView
+{
+    if (!_timeImageView)
+    {
+        _timeImageView = [[UIImageView alloc] init];
+        _timeImageView.image = [UIImage imageNamed:@"jiantou.png"];
+    }
+    return _timeImageView;
+}
+
 - (UIView *)lineView
 {
     if (!_lineView)
@@ -57,9 +93,6 @@ NSString *const orderNO = @"未接单";
         [_timeButton setTitle:[self currDate] forState:UIControlStateNormal];
         [_timeButton setTitleColor:[UIColor colorWithHex:0X353535] forState:UIControlStateNormal];
         _timeButton.titleLabel.font = [UIFont systemFontOfSize:17];
-        [_timeButton setImage:[UIImage imageNamed:@"jiantou.png"] forState:UIControlStateNormal];
-        [_timeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 65, 0, -65)];
-        [_timeButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -25, 0, 25)];
         [_timeButton addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         _timeButton.tag = 0;
         _time = [self currDate];
@@ -75,9 +108,6 @@ NSString *const orderNO = @"未接单";
         [_shopNameButton setTitle:@"默认门店" forState:UIControlStateNormal];
         _shopNameButton.titleLabel.font = [UIFont systemFontOfSize:17];
         [_shopNameButton setTitleColor:[UIColor colorWithHex:0X353535] forState:UIControlStateNormal];
-        [_shopNameButton setImage:[UIImage imageNamed:@"jiantou.png"] forState:UIControlStateNormal];
-        [_shopNameButton setImageEdgeInsets:UIEdgeInsetsMake(0, 70, 0, -70)];
-        [_shopNameButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 20)];
         [_timeButton addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         _shopNameButton.tag = 1;
     }
@@ -92,9 +122,6 @@ NSString *const orderNO = @"未接单";
         [_orderStateButton setTitle:orderNO forState:UIControlStateNormal];
         _orderStateButton.titleLabel.font = [UIFont systemFontOfSize:17];
         [_orderStateButton setTitleColor:[UIColor colorWithHex:0X353535] forState:UIControlStateNormal];
-        [_orderStateButton setImage:[UIImage imageNamed:@"jiantou.png"] forState:UIControlStateNormal];
-        [_orderStateButton setImageEdgeInsets:UIEdgeInsetsMake(0, 60, 0, -60)];
-        [_orderStateButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
         [_orderStateButton addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         _orderState = orderNO;
         _orderStateButton.tag = 2;
@@ -111,14 +138,31 @@ NSString *const orderNO = @"未接单";
         make.centerY.equalTo(self);
     }];
     
+    [_timeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@(8));
+        make.left.equalTo(_timeButton.mas_right);
+        make.centerY.equalTo(_timeButton);
+    }];
+    
     [_shopNameButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
     }];
     
+    [_shopImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@(8));
+        make.left.equalTo(_shopNameButton.mas_right).offset(3);
+        make.centerY.equalTo(_shopNameButton);
+    }];
+    
     [_orderStateButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(100));
-        make.right.equalTo(self).offset(-15);
+        make.right.equalTo(self).offset(-30);
         make.centerY.equalTo(self);
+    }];
+    
+    [_orderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@(8));
+        make.left.equalTo(_orderStateButton.mas_right).offset(1);
+        make.centerY.equalTo(_orderStateButton);
     }];
     
     [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,7 +176,7 @@ NSString *const orderNO = @"未接单";
 {
     NSDate *date = [NSDate date];
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yy-MM-dd";
+    fmt.dateFormat = @"yyyy-MM-dd";
     return  [fmt stringFromDate:date];
 }
 
@@ -142,6 +186,12 @@ NSString *const orderNO = @"未接单";
     {
         [self.delegate clickButton:self index:button.tag];
     }
+}
+
+- (void)setTime:(NSString *)time
+{
+    _time = time;
+    [_timeButton setTitle:time forState:UIControlStateNormal];
 }
 
 

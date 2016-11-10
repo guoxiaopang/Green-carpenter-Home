@@ -10,6 +10,7 @@
 #import "QJOrderTitleView.h"
 #import "UIColor+QJColorHEX.h"
 #import "QJOrderCollectionViewCell.h"
+#import "QJDatePickerView.h"
 
 static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 
@@ -18,7 +19,7 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 @property (nonatomic, strong) QJOrderTitleView *selectView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 //时间选择器
-@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) QJDatePickerView *datePickerView;
 
 @end
 
@@ -37,15 +38,13 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 }
 
 #pragma mark - 懒加载
-- (UIDatePicker *)datePicker
+- (QJDatePickerView *)datePickerView
 {
-    if (!_datePicker)
+    if (!_datePickerView)
     {
-        _datePicker = [[UIDatePicker alloc] init];
-        _datePicker.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - 200, CGRectGetWidth(self.view.frame), 200);
-        _datePicker.datePickerMode = UIDatePickerModeDate;
+        _datePickerView = [[QJDatePickerView alloc] init];
     }
-    return _datePicker;
+    return _datePickerView;
 }
 
 - (QJOrderTitleView *)selectView
@@ -123,7 +122,12 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 #pragma mark - Void
 - (void)pushUIDatePicker
 {
-    [self.view addSubview:self.datePicker];
+    [self.datePickerView show];
+    __weak typeof(self) weakSelf = self;
+    self.datePickerView.str = ^(NSString *str)
+    {
+        weakSelf.selectView.time = str;
+    };
 }
 
 - (void)seletedDatePicker:(UIDatePicker *)picker

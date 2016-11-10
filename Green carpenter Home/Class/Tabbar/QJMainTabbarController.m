@@ -9,6 +9,7 @@
 #import "QJMainTabbarController.h"
 #import "QJMyViewController.h"
 #import "QJOrderViewController.h"
+#import "QJNavigationController.h"
 
 @interface QJMainTabbarController ()
 
@@ -32,7 +33,7 @@
 
 - (void)addController:(UIViewController *) controller title:(NSString *) title imageName:(NSString *)image seletedImage:(NSString *) seletedImage
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    QJNavigationController *nav = [[QJNavigationController alloc] initWithRootViewController:controller];
     
     controller.tabBarItem.title = title;
     
