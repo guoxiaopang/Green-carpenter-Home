@@ -11,7 +11,16 @@
 extern NSString *const orderYes;
 extern NSString *const orderNO;
 
+@class QJOrderTitleView;
+@protocol QJOrderTitleViewDelegate <NSObject>
+
+- (void)clickButton:(QJOrderTitleView *)titleView index:(NSInteger)index;
+
+@end
+
 @interface QJOrderTitleView : UIView
+
+@property (nonatomic, weak)id<QJOrderTitleViewDelegate> delegate;
 
 //时间
 @property (nonatomic, strong) NSString *time;
