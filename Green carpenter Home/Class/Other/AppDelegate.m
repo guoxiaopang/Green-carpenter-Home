@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "QJMainTabbarController.h"
+#import "YYFPSLabel.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    
+#if defined(DEBUG)||defined(_DEBUG)
+    YYFPSLabel *label = [YYFPSLabel new];
+    label.frame = CGRectMake(200, 200, 50, 30);
+    [label sizeToFit];
+    [self.window addSubview:label];
+#endif
     return YES;
 }
 
