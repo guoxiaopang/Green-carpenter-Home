@@ -29,6 +29,10 @@
 @property(nonatomic, strong) UILabel *contentLabel;
 // 总价
 @property(nonatomic, strong) UILabel *totalPrice;
+// 订单号
+@property(nonatomic, strong) UILabel *orderNumberLabel;
+// 备注
+@property(nonatomic, strong) UILabel *infoLabel;
 
 @end
 
@@ -41,7 +45,9 @@
     {
         self.layer.cornerRadius = 5.0f;
         self.clipsToBounds = YES;
-        
+//        CGFloat width = [UIScreen mainScreen].bounds.size.width - 20 - 28;
+//        CGRect rect = CGRectMake(0, 0, width, 0);
+//        self.frame = rect;
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.nameLabel];
         [self.contentView addSubview:self.qianyueLabel];
@@ -50,19 +56,47 @@
         [self.contentView addSubview:self.numberLabel];
         [self.contentView addSubview:self.addressLabel];
         [self.contentView addSubview:self.totalPrice];
+        [self.contentView addSubview:self.orderNumberLabel];
         [self.contentView addSubview:self.contentLabel];
+        [self.contentView addSubview:self.infoLabel];
         [self addLayout];
     }
     return self;
 }
 
 #pragma mark - 懒加载
+- (UILabel *)infoLabel
+{
+    if (!_infoLabel)
+    {
+        _infoLabel = [[UILabel alloc] init];
+        _infoLabel.text = @"备注 : 多一点辣椒";
+        _infoLabel.font = [UIFont systemFontOfSize:14];
+        _infoLabel.numberOfLines = 0;
+    }
+    return _infoLabel;
+}
+
+- (UILabel *)orderNumberLabel
+{
+    if (!_orderNumberLabel)
+    {
+        _orderNumberLabel = [[UILabel alloc] init];
+        _orderNumberLabel.text = @"订单号 : 12345678";
+        _orderNumberLabel.font = [UIFont systemFontOfSize:14];
+        _orderNumberLabel.textColor = self.tintColor;
+    }
+    return _orderNumberLabel;
+}
+
 - (UILabel *)contentLabel
 {
     if (!_contentLabel)
     {
         _contentLabel = [[UILabel alloc] init];
-        _contentLabel.text = @"牛肉面 X2\n杂酱面 X2\n";
+        _contentLabel.text = @"牛肉面 X2\n杂酱面 X2";
+        _contentLabel.font = [UIFont systemFontOfSize:15];
+        _contentLabel.numberOfLines = 0;
     }
     return _contentLabel;
 }
@@ -87,7 +121,7 @@
         _addressLabel.textColor = [UIColor colorWithHex:0X635E63];
         _addressLabel.font = [UIFont systemFontOfSize:13];
         _addressLabel.numberOfLines = 0;
-        _addressLabel.text = @"地址 : 广州市黄浦区伴河路90号3单元4楼5号3单元4楼5号广州市黄浦区伴河路90号3单元4楼5号3单元4楼5号";
+        _addressLabel.text = @"地址 : 广州市黄浦区伴河路90号";
     }
     return _addressLabel;
 }
@@ -173,7 +207,7 @@
         make.left.equalTo(self.contentView).offset(14);
         make.top.equalTo(self.contentView).offset(15);
         make.height.width.equalTo(@(40));
-        make.bottom.equalTo(self.contentView).offset(-200);
+//        make.bottom.equalTo(self.contentView).offset(-200);
     }];
     
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -213,10 +247,22 @@
         make.top.equalTo(_numberLabel.mas_bottom).offset(5);
     }];
     
-    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_addressLabel);
-        make.width.equalTo(@(width));
+    [_orderNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_numberLabel);
+        make.width.equalTo(@150);
         make.top.equalTo(_addressLabel.mas_bottom).offset(5);
+    }];
+    
+    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_orderNumberLabel);
+        make.width.equalTo(@(width));
+        make.top.equalTo(_orderNumberLabel.mas_bottom).offset(10);
+    }];
+    
+    [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(_contentLabel);
+        make.top.equalTo(_contentLabel.mas_bottom).offset(10);
+        make.bottom.equalTo(self.contentView).offset(-14);
     }];
 }
 
