@@ -19,6 +19,19 @@
 
 @implementation QJAddDataManager
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+//        NSNotification *notifi = [[NSNotification alloc] initWithName:@"sale" object:nil userInfo:@{@"list" : self.saleArray}];
+//        [[NSNotificationCenter defaultCenter] postNotification:notifi];
+        [self.saleArray addObserver:self forKeyPath:@"count" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
+}
+
+
 #pragma mark - left
 
 - (NSMutableArray *)leftItem
@@ -133,5 +146,12 @@
     }
     //执行到这里 说明里面没有相等的 有可能为空
     [self.saleArray addObject:model];
+}
+
+// 通知改变值
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    NSLog(@"%@", keyPath);
 }
 @end

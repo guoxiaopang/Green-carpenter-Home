@@ -12,6 +12,7 @@
 		3557244C1DD9A7F800B824ED /* QJAddRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557244B1DD9A7F800B824ED /* QJAddRightTableViewCell.m */; };
 		3557245A1DD9B29B00B824ED /* NSString+PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724571DD9B29B00B824ED /* NSString+PPNumberButton.m */; };
 		3557245B1DD9B29B00B824ED /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724591DD9B29B00B824ED /* PPNumberButton.m */; };
+		3557245E1DD9BFEB00B824ED /* QJAddBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557245D1DD9BFEB00B824ED /* QJAddBottomView.m */; };
 		358310A11DD44ACC000B5CCB /* UIColor+QJColorHEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A01DD44ACC000B5CCB /* UIColor+QJColorHEX.m */; };
 		358310A41DD45E29000B5CCB /* QJOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A31DD45E29000B5CCB /* QJOrderCollectionViewCell.m */; };
 		358310A71DD465F1000B5CCB /* QJDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A61DD465F1000B5CCB /* QJDatePickerView.m */; };
@@ -45,6 +46,8 @@
 		355724571DD9B29B00B824ED /* NSString+PPNumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PPNumberButton.m"; sourceTree = "<group>"; };
 		355724581DD9B29B00B824ED /* PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
 		355724591DD9B29B00B824ED /* PPNumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNumberButton.m; sourceTree = "<group>"; };
+		3557245C1DD9BFEB00B824ED /* QJAddBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddBottomView.h; sourceTree = "<group>"; };
+		3557245D1DD9BFEB00B824ED /* QJAddBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddBottomView.m; sourceTree = "<group>"; };
 		3583109F1DD44ACC000B5CCB /* UIColor+QJColorHEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+QJColorHEX.h"; sourceTree = "<group>"; };
 		358310A01DD44ACC000B5CCB /* UIColor+QJColorHEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+QJColorHEX.m"; sourceTree = "<group>"; };
 		358310A21DD45E29000B5CCB /* QJOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJOrderCollectionViewCell.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				3587D65C1DD98F8D00B46797 /* QJAddLeftTableViewCell.m */,
 				3557244A1DD9A7F800B824ED /* QJAddRightTableViewCell.h */,
 				3557244B1DD9A7F800B824ED /* QJAddRightTableViewCell.m */,
+				3557245C1DD9BFEB00B824ED /* QJAddBottomView.h */,
+				3557245D1DD9BFEB00B824ED /* QJAddBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				3587D6571DD9888400B46797 /* QJAddViewController.m in Sources */,
 				3557244C1DD9A7F800B824ED /* QJAddRightTableViewCell.m in Sources */,
 				358BE0D31DD4226500044A9F /* main.m in Sources */,
+				3557245E1DD9BFEB00B824ED /* QJAddBottomView.m in Sources */,
 				358310AD1DD4962C000B5CCB /* UIImage+QJRadiuImage.m in Sources */,
 				358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */,
 				358310A71DD465F1000B5CCB /* QJDatePickerView.m in Sources */,

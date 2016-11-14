@@ -12,6 +12,7 @@
 #import "Masonry.h"
 #import "QJMenuModel.h"
 #import "QJAddRightTableViewCell.h"
+#import "QJAddBottomView.h"
 
 static  NSString *QJAddLeftTableViewCellIdent = @"QJAddLeftTableViewCellIdent";
 static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent";
@@ -21,6 +22,7 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
 @property (nonatomic, strong) UITableView *leftTableView;
 @property (nonatomic, strong) UITableView *rightTableView;
 @property (nonatomic, strong) QJAddDataManager *dataManager;
+@property (nonatomic, strong) QJAddBottomView *bottomView;
 
 @end
 
@@ -38,11 +40,23 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
     [self.view addSubview:self.leftTableView];
     [self.view addSubview:self.rightTableView];
     
+    [self.view addSubview:self.bottomView];
+    [self addLayout];
     _selected = 0;
     _oldSelected = 0;
 }
 
 #pragma mark - 懒加载
+- (QJAddBottomView *)bottomView
+{
+    if (!_bottomView)
+    {
+        _bottomView = [[QJAddBottomView alloc] init];
+//        _bottomView.backgroundColor = [UIColor yellowColor];
+    }
+    return _bottomView;
+}
+
 - (UITableView *)rightTableView
 {
     if (!_rightTableView)
@@ -152,5 +166,14 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
 {
     //改变值
     [self.dataManager changeModelNum:view.model number:index];
+}
+
+#pragma mark - Void
+- (void)addLayout
+{
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.left.bottom.equalTo(self.view);
+        make.height.equalTo(@44);
+    }];
 }
 @end
