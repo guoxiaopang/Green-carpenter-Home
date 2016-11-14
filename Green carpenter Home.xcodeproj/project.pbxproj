@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1388AFB0BD72FFC0BE57B072 /* libPods-Green carpenter Home.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD57F6F29CC5B41305EDE1 /* libPods-Green carpenter Home.a */; };
+		355724491DD9A2F700B824ED /* QJMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724481DD9A2F700B824ED /* QJMenuModel.m */; };
+		3557244C1DD9A7F800B824ED /* QJAddRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557244B1DD9A7F800B824ED /* QJAddRightTableViewCell.m */; };
+		3557245A1DD9B29B00B824ED /* NSString+PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724571DD9B29B00B824ED /* NSString+PPNumberButton.m */; };
+		3557245B1DD9B29B00B824ED /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724591DD9B29B00B824ED /* PPNumberButton.m */; };
 		358310A11DD44ACC000B5CCB /* UIColor+QJColorHEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A01DD44ACC000B5CCB /* UIColor+QJColorHEX.m */; };
 		358310A41DD45E29000B5CCB /* QJOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A31DD45E29000B5CCB /* QJOrderCollectionViewCell.m */; };
 		358310A71DD465F1000B5CCB /* QJDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310A61DD465F1000B5CCB /* QJDatePickerView.m */; };
@@ -18,6 +22,9 @@
 		3587D6461DD9684F00B46797 /* QJOrderCollectionBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D6451DD9684F00B46797 /* QJOrderCollectionBottomView.m */; };
 		3587D64D1DD986A900B46797 /* QJSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D64C1DD986A900B46797 /* QJSearchViewController.m */; };
 		3587D6571DD9888400B46797 /* QJAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D6561DD9888400B46797 /* QJAddViewController.m */; };
+		3587D65A1DD98D8E00B46797 /* QJAddDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D6591DD98D8E00B46797 /* QJAddDataManager.m */; };
+		3587D65D1DD98F8D00B46797 /* QJAddLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D65C1DD98F8D00B46797 /* QJAddLeftTableViewCell.m */; };
+		3587D65F1DD99F3700B46797 /* dishes.PLIST in Resources */ = {isa = PBXBuildFile; fileRef = 3587D65E1DD99F3700B46797 /* dishes.PLIST */; };
 		358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 358BE0C21DD4226500044A9F /* AppDelegate.m */; };
 		358BE0D11DD4226500044A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358BE0C31DD4226500044A9F /* Assets.xcassets */; };
 		358BE0D21DD4226500044A9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358BE0C41DD4226500044A9F /* LaunchScreen.storyboard */; };
@@ -30,6 +37,14 @@
 
 /* Begin PBXFileReference section */
 		33CD57F6F29CC5B41305EDE1 /* libPods-Green carpenter Home.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Green carpenter Home.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		355724471DD9A2F700B824ED /* QJMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJMenuModel.h; sourceTree = "<group>"; };
+		355724481DD9A2F700B824ED /* QJMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJMenuModel.m; sourceTree = "<group>"; };
+		3557244A1DD9A7F800B824ED /* QJAddRightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddRightTableViewCell.h; sourceTree = "<group>"; };
+		3557244B1DD9A7F800B824ED /* QJAddRightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddRightTableViewCell.m; sourceTree = "<group>"; };
+		355724561DD9B29B00B824ED /* NSString+PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PPNumberButton.h"; sourceTree = "<group>"; };
+		355724571DD9B29B00B824ED /* NSString+PPNumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PPNumberButton.m"; sourceTree = "<group>"; };
+		355724581DD9B29B00B824ED /* PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
+		355724591DD9B29B00B824ED /* PPNumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNumberButton.m; sourceTree = "<group>"; };
 		3583109F1DD44ACC000B5CCB /* UIColor+QJColorHEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+QJColorHEX.h"; sourceTree = "<group>"; };
 		358310A01DD44ACC000B5CCB /* UIColor+QJColorHEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+QJColorHEX.m"; sourceTree = "<group>"; };
 		358310A21DD45E29000B5CCB /* QJOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJOrderCollectionViewCell.h; sourceTree = "<group>"; };
@@ -50,6 +65,11 @@
 		3587D64C1DD986A900B46797 /* QJSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJSearchViewController.m; sourceTree = "<group>"; };
 		3587D6551DD9888400B46797 /* QJAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddViewController.h; sourceTree = "<group>"; };
 		3587D6561DD9888400B46797 /* QJAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddViewController.m; sourceTree = "<group>"; };
+		3587D6581DD98D8E00B46797 /* QJAddDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QJAddDataManager.h; path = ../View/QJAddDataManager.h; sourceTree = "<group>"; };
+		3587D6591DD98D8E00B46797 /* QJAddDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QJAddDataManager.m; path = ../View/QJAddDataManager.m; sourceTree = "<group>"; };
+		3587D65B1DD98F8D00B46797 /* QJAddLeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddLeftTableViewCell.h; sourceTree = "<group>"; };
+		3587D65C1DD98F8D00B46797 /* QJAddLeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddLeftTableViewCell.m; sourceTree = "<group>"; };
+		3587D65E1DD99F3700B46797 /* dishes.PLIST */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dishes.PLIST; sourceTree = "<group>"; };
 		358BE0A51DD4214F00044A9F /* Green carpenter Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Green carpenter Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		358BE0B91DD4214F00044A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358BE0C11DD4226500044A9F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +108,17 @@
 				65FF5477D821C281F1A58FBB /* Pods-Green carpenter Home.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		355724551DD9B29B00B824ED /* PPNumberButton */ = {
+			isa = PBXGroup;
+			children = (
+				355724561DD9B29B00B824ED /* NSString+PPNumberButton.h */,
+				355724571DD9B29B00B824ED /* NSString+PPNumberButton.m */,
+				355724581DD9B29B00B824ED /* PPNumberButton.h */,
+				355724591DD9B29B00B824ED /* PPNumberButton.m */,
+			);
+			path = PPNumberButton;
 			sourceTree = "<group>";
 		};
 		3587D6471DD9869100B46797 /* 搜索 */ = {
@@ -145,6 +176,11 @@
 		3587D6521DD9887200B46797 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3587D6581DD98D8E00B46797 /* QJAddDataManager.h */,
+				3587D6591DD98D8E00B46797 /* QJAddDataManager.m */,
+				3587D65E1DD99F3700B46797 /* dishes.PLIST */,
+				355724471DD9A2F700B824ED /* QJMenuModel.h */,
+				355724481DD9A2F700B824ED /* QJMenuModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,6 +188,11 @@
 		3587D6531DD9887200B46797 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				355724551DD9B29B00B824ED /* PPNumberButton */,
+				3587D65B1DD98F8D00B46797 /* QJAddLeftTableViewCell.h */,
+				3587D65C1DD98F8D00B46797 /* QJAddLeftTableViewCell.m */,
+				3557244A1DD9A7F800B824ED /* QJAddRightTableViewCell.h */,
+				3557244B1DD9A7F800B824ED /* QJAddRightTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				358BE0D21DD4226500044A9F /* LaunchScreen.storyboard in Resources */,
+				3587D65F1DD99F3700B46797 /* dishes.PLIST in Resources */,
 				358BE0D11DD4226500044A9F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,10 +483,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3557245A1DD9B29B00B824ED /* NSString+PPNumberButton.m in Sources */,
+				3587D65A1DD98D8E00B46797 /* QJAddDataManager.m in Sources */,
 				358310AA1DD47ADD000B5CCB /* QJNavigationController.m in Sources */,
 				3587D6461DD9684F00B46797 /* QJOrderCollectionBottomView.m in Sources */,
 				358310A11DD44ACC000B5CCB /* UIColor+QJColorHEX.m in Sources */,
 				3587D6571DD9888400B46797 /* QJAddViewController.m in Sources */,
+				3557244C1DD9A7F800B824ED /* QJAddRightTableViewCell.m in Sources */,
 				358BE0D31DD4226500044A9F /* main.m in Sources */,
 				358310AD1DD4962C000B5CCB /* UIImage+QJRadiuImage.m in Sources */,
 				358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */,
@@ -455,8 +500,11 @@
 				358310A41DD45E29000B5CCB /* QJOrderCollectionViewCell.m in Sources */,
 				358BE0DF1DD442D000044A9F /* QJOrderTitleView.m in Sources */,
 				358BE0D61DD4229D00044A9F /* QJMainTabbarController.m in Sources */,
+				355724491DD9A2F700B824ED /* QJMenuModel.m in Sources */,
+				3557245B1DD9B29B00B824ED /* PPNumberButton.m in Sources */,
 				358BE0D91DD4231000044A9F /* QJMyViewController.m in Sources */,
 				3587D64D1DD986A900B46797 /* QJSearchViewController.m in Sources */,
+				3587D65D1DD98F8D00B46797 /* QJAddLeftTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +540,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -539,6 +588,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

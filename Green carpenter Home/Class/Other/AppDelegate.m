@@ -28,7 +28,7 @@
     
 #if defined(DEBUG)||defined(_DEBUG)
     YYFPSLabel *label = [YYFPSLabel new];
-    label.frame = CGRectMake(200, 200, 50, 30);
+    label.frame = CGRectMake(50, 20, 50, 30);
     [label sizeToFit];
     [self.window addSubview:label];
 #endif

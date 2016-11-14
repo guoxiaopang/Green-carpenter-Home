@@ -7,5 +7,6 @@ pod 'MBProgressHUD', '~> 1.0.0'
 pod 'SDWebImage', '~> 3.8.1'
 pod 'MJRefresh'
 pod 'SDCycleScrollView','~> 1.64'
+
 end
 
