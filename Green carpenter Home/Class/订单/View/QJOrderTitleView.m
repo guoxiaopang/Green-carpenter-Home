@@ -12,6 +12,7 @@
 
 NSString *const orderYes = @"已接单";
 NSString *const orderNO = @"未接单";
+NSString *const orderAll = @"全部订单";
 
 @interface QJOrderTitleView()
 
@@ -119,11 +120,11 @@ NSString *const orderNO = @"未接单";
     if (!_orderStateButton)
     {
         _orderStateButton = [[UIButton alloc] init];
-        [_orderStateButton setTitle:orderNO forState:UIControlStateNormal];
+        [_orderStateButton setTitle:orderAll forState:UIControlStateNormal];
         _orderStateButton.titleLabel.font = [UIFont systemFontOfSize:17];
         [_orderStateButton setTitleColor:[UIColor colorWithHex:0X353535] forState:UIControlStateNormal];
         [_orderStateButton addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
-        _orderState = orderNO;
+        _orderState = orderAll;
         _orderStateButton.tag = 2;
     }
     return _orderStateButton;

@@ -10,6 +10,7 @@
 
 extern NSString *const orderYes;
 extern NSString *const orderNO;
+extern NSString *const orderAll;
 
 @class QJOrderTitleView;
 @protocol QJOrderTitleViewDelegate <NSObject>

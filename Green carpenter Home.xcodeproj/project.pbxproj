@@ -15,6 +15,9 @@
 		358310AD1DD4962C000B5CCB /* UIImage+QJRadiuImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310AC1DD4962C000B5CCB /* UIImage+QJRadiuImage.m */; };
 		358310B21DD496C2000B5CCB /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310AF1DD496C2000B5CCB /* YYFPSLabel.m */; };
 		358310B31DD496C2000B5CCB /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 358310B11DD496C2000B5CCB /* YYWeakProxy.m */; };
+		3587D6461DD9684F00B46797 /* QJOrderCollectionBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D6451DD9684F00B46797 /* QJOrderCollectionBottomView.m */; };
+		3587D64D1DD986A900B46797 /* QJSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D64C1DD986A900B46797 /* QJSearchViewController.m */; };
+		3587D6571DD9888400B46797 /* QJAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587D6561DD9888400B46797 /* QJAddViewController.m */; };
 		358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 358BE0C21DD4226500044A9F /* AppDelegate.m */; };
 		358BE0D11DD4226500044A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358BE0C31DD4226500044A9F /* Assets.xcassets */; };
 		358BE0D21DD4226500044A9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358BE0C41DD4226500044A9F /* LaunchScreen.storyboard */; };
@@ -41,6 +44,12 @@
 		358310AF1DD496C2000B5CCB /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		358310B01DD496C2000B5CCB /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		358310B11DD496C2000B5CCB /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		3587D6441DD9684F00B46797 /* QJOrderCollectionBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJOrderCollectionBottomView.h; sourceTree = "<group>"; };
+		3587D6451DD9684F00B46797 /* QJOrderCollectionBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJOrderCollectionBottomView.m; sourceTree = "<group>"; };
+		3587D64B1DD986A900B46797 /* QJSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJSearchViewController.h; sourceTree = "<group>"; };
+		3587D64C1DD986A900B46797 /* QJSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJSearchViewController.m; sourceTree = "<group>"; };
+		3587D6551DD9888400B46797 /* QJAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddViewController.h; sourceTree = "<group>"; };
+		3587D6561DD9888400B46797 /* QJAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddViewController.m; sourceTree = "<group>"; };
 		358BE0A51DD4214F00044A9F /* Green carpenter Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Green carpenter Home.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		358BE0B91DD4214F00044A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		358BE0C11DD4226500044A9F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +90,72 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3587D6471DD9869100B46797 /* 搜索 */ = {
+			isa = PBXGroup;
+			children = (
+				3587D6481DD9869100B46797 /* Controller */,
+				3587D6491DD9869100B46797 /* Model */,
+				3587D64A1DD9869100B46797 /* View */,
+			);
+			path = "搜索";
+			sourceTree = "<group>";
+		};
+		3587D6481DD9869100B46797 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3587D64B1DD986A900B46797 /* QJSearchViewController.h */,
+				3587D64C1DD986A900B46797 /* QJSearchViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3587D6491DD9869100B46797 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3587D64A1DD9869100B46797 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3587D64E1DD9887200B46797 /* 添加 */ = {
+			isa = PBXGroup;
+			children = (
+				3587D64F1DD9887200B46797 /* Controller */,
+				3587D6521DD9887200B46797 /* Model */,
+				3587D6531DD9887200B46797 /* View */,
+			);
+			path = "添加";
+			sourceTree = "<group>";
+		};
+		3587D64F1DD9887200B46797 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3587D6551DD9888400B46797 /* QJAddViewController.h */,
+				3587D6561DD9888400B46797 /* QJAddViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3587D6521DD9887200B46797 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3587D6531DD9887200B46797 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		358BE09C1DD4214F00044A9F = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +194,8 @@
 		358BE0BF1DD4226500044A9F /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				3587D64E1DD9887200B46797 /* 添加 */,
+				3587D6471DD9869100B46797 /* 搜索 */,
 				358BE0C01DD4226500044A9F /* Other */,
 				358BE0C71DD4226500044A9F /* Main */,
 				358BE0C81DD4226500044A9F /* 我的信息 */,
@@ -227,6 +304,8 @@
 				358310A31DD45E29000B5CCB /* QJOrderCollectionViewCell.m */,
 				358310A51DD465F1000B5CCB /* QJDatePickerView.h */,
 				358310A61DD465F1000B5CCB /* QJDatePickerView.m */,
+				3587D6441DD9684F00B46797 /* QJOrderCollectionBottomView.h */,
+				3587D6451DD9684F00B46797 /* QJOrderCollectionBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,7 +442,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				358310AA1DD47ADD000B5CCB /* QJNavigationController.m in Sources */,
+				3587D6461DD9684F00B46797 /* QJOrderCollectionBottomView.m in Sources */,
 				358310A11DD44ACC000B5CCB /* UIColor+QJColorHEX.m in Sources */,
+				3587D6571DD9888400B46797 /* QJAddViewController.m in Sources */,
 				358BE0D31DD4226500044A9F /* main.m in Sources */,
 				358310AD1DD4962C000B5CCB /* UIImage+QJRadiuImage.m in Sources */,
 				358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */,
@@ -375,6 +456,7 @@
 				358BE0DF1DD442D000044A9F /* QJOrderTitleView.m in Sources */,
 				358BE0D61DD4229D00044A9F /* QJMainTabbarController.m in Sources */,
 				358BE0D91DD4231000044A9F /* QJMyViewController.m in Sources */,
+				3587D64D1DD986A900B46797 /* QJSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

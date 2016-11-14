@@ -10,8 +10,9 @@
 #import "Masonry.h"
 #import "UIImage+QJRadiuImage.h"
 #import "UIColor+QJColorHEX.h"
+#import "QJOrderCollectionBottomView.h"
 
-@interface QJOrderCollectionViewCell()
+@interface QJOrderCollectionViewCell()<UIAlertViewDelegate, QJOrderCollectionBottomViewDelegate>
 
 @property(nonatomic, strong) UIImageView *iconView;
 @property(nonatomic, strong) UILabel *nameLabel;
@@ -33,10 +34,15 @@
 @property(nonatomic, strong) UILabel *orderNumberLabel;
 // 备注
 @property(nonatomic, strong) UILabel *infoLabel;
+// 按钮栏
+@property(nonatomic, strong) QJOrderCollectionBottomView *buttomView;
 
 @end
 
 @implementation QJOrderCollectionViewCell
+{
+    NSString *_phoneNumber;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -59,12 +65,23 @@
         [self.contentView addSubview:self.orderNumberLabel];
         [self.contentView addSubview:self.contentLabel];
         [self.contentView addSubview:self.infoLabel];
+        [self.contentView addSubview:self.buttomView];
         [self addLayout];
     }
     return self;
 }
 
 #pragma mark - 懒加载
+- (QJOrderCollectionBottomView *)buttomView
+{
+    if (!_buttomView)
+    {
+        _buttomView = [[QJOrderCollectionBottomView alloc] init];
+        _buttomView.delegate = self;
+    }
+    return _buttomView;
+}
+
 - (UILabel *)infoLabel
 {
     if (!_infoLabel)
@@ -85,6 +102,9 @@
         _orderNumberLabel.text = @"订单号 : 12345678";
         _orderNumberLabel.font = [UIFont systemFontOfSize:14];
         _orderNumberLabel.textColor = self.tintColor;
+        _orderNumberLabel.userInteractionEnabled = YES;
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(orderLongPress)];
+        [_orderNumberLabel addGestureRecognizer:longPress];
     }
     return _orderNumberLabel;
 }
@@ -133,7 +153,11 @@
         _numberLabel = [[UILabel alloc] init];
         _numberLabel.textColor = [UIColor colorWithHex:0X635E63];
         _numberLabel.font = [UIFont systemFontOfSize:13];
-        _numberLabel.text = @"电话 : 136062356010";
+        _numberLabel.text = @"电话 : 13062356010";
+        _phoneNumber = @"13062356010";
+        _numberLabel.userInteractionEnabled = YES;
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(numberLongPress:)];
+        [_numberLabel addGestureRecognizer:longPress];
     }
     return _numberLabel;
 }
@@ -207,7 +231,6 @@
         make.left.equalTo(self.contentView).offset(14);
         make.top.equalTo(self.contentView).offset(15);
         make.height.width.equalTo(@(40));
-//        make.bottom.equalTo(self.contentView).offset(-200);
     }];
     
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -262,10 +285,106 @@
     [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(_contentLabel);
         make.top.equalTo(_contentLabel.mas_bottom).offset(10);
-        make.bottom.equalTo(self.contentView).offset(-14);
+//        make.bottom.equalTo(self.contentView).offset(-14);
+    }];
+    
+    [_buttomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.contentView);
+        make.top.equalTo(_infoLabel.mas_bottom).offset(5);
+        make.bottom.equalTo(self.contentView);
+        make.height.equalTo(@44);
     }];
 }
 
+// 电话 长按复制
+- (void)numberLongPress:(UILongPressGestureRecognizer *)longPress
+{
+    NSLog(@"numberLongPress");
+    if (longPress.state == UIGestureRecognizerStateRecognized)
+    {
+        //获得菜单
+        UIAlertView *alertView = [[UIAlertView alloc] init];
+        alertView.title = @"确定拨打电话?";
+        NSString *str = [_numberLabel.text stringByReplacingOccurrencesOfString:@"电话 : " withString:@""];
+        _phoneNumber = str;
+        alertView.message = str;
+        alertView.delegate = self;
+        [alertView addButtonWithTitle:@"确定"];
+        [alertView addButtonWithTitle:@"取消"];
+        [alertView show];
+    }
 
+}
 
+// 订单号 长按复制
+- (void)orderLongPress
+{
+    NSLog(@"orderLongPress");
+    [self becomeFirstResponder];// 不是在控制器中 需要注册第一响应者
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    CGRect rect = _orderNumberLabel.frame;
+    [menu setTargetRect:rect inView:self.contentView];
+    [menu setMenuVisible:YES animated:YES];
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+// 内部显示内容
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    if (action == @selector(copy:))
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)copy:(UIMenuController *)menu
+{
+    NSLog(@"copy");
+    // 存储文字到剪切板
+//    NSString * str = [_numberLabel.text stringByReplacingOccurrencesOfString:@"电话 : " withString:@""];
+    NSString *str = [_orderNumberLabel.text stringByReplacingOccurrencesOfString:@"订单号 : " withString:@""];
+    [UIPasteboard generalPasteboard].string = str;
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0)
+{
+    if (buttonIndex == 0)
+    {
+        [self call];
+    }
+}
+
+- (void)call
+{
+    NSURL *url = [NSURL URLWithString:_phoneNumber];
+    if ([[UIApplication sharedApplication] canOpenURL:url])
+    {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    else
+    {
+        NSLog(@"设备不支持拨打电话");
+    }
+}
+
+#pragma mark - QJOrderCollectionBottomViewDelegate
+- (void)callPhone:(QJOrderCollectionBottomView *)view
+{
+    //获得菜单
+    UIAlertView *alertView = [[UIAlertView alloc] init];
+    alertView.title = @"确定拨打电话?";
+    NSString *str = [_numberLabel.text stringByReplacingOccurrencesOfString:@"电话 : " withString:@""];
+    _phoneNumber = str;
+    alertView.message = str;
+    alertView.delegate = self;
+    [alertView addButtonWithTitle:@"确定"];
+    [alertView addButtonWithTitle:@"取消"];
+    [alertView show];
+
+}
 @end
