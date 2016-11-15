@@ -12,6 +12,6 @@
 
 @property(nonatomic, strong) NSString *address;
 
-- (void)changeLabelValue:(NSString *)str;
+- (void)changeLabelValue:(NSString *)name withNumber:(NSString *)str address:(NSString *)add;
 
 @end

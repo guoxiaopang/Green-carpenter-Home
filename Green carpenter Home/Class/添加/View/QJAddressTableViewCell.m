@@ -65,20 +65,36 @@
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.numberOfLines = 0;
         _contentLabel.font = [UIFont systemFontOfSize:13];
-//        _contentLabel.text = @"aaaaaaa";
-//        _contentLabel.backgroundColor = [UIColor redColor];
     }
     return _contentLabel;
 }
 
-- (void)changeLabelValue:(NSString *)str
-{
-    if (!str)
-    {
-        return;
-    }
-    _contentLabel.text = str;
-    self.address = str;
-}
+//- (void)changeLabelValue:(NSString *)str
+//{
+//    if (!str)
+//    {
+//        return;
+//    }
+//    _contentLabel.text = str;
+//    self.address = str;
+//}
 
+- (void)changeLabelValue:(NSString *)name withNumber:(NSString *)str address:(NSString *)add
+{
+    NSMutableString *content = [NSMutableString string];
+    if ([name boolValue])
+    {
+        [content appendString:name];
+        [content appendString:@"\n"];
+    }
+    
+    if ([str boolValue])
+    {
+        [content appendString:str];
+        [content appendString:@"\n"];
+    }
+    
+    [content appendString:add];
+    _contentLabel.text = content;
+}
 @end

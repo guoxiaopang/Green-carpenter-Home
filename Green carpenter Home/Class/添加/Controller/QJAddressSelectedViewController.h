@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^address)(NSString *str);
+typedef void(^address)(NSString *name , NSString *phoneNumber, NSString *address);
 @interface QJAddressSelectedViewController : UIViewController
 
 @property (nonatomic, strong) address str;

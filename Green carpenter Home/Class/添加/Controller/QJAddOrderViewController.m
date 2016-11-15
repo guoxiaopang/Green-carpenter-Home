@@ -21,6 +21,8 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
 @implementation QJAddOrderViewController
 {
     NSString *_address;
+    NSString *_phoneNumber;
+    NSString *_name;
 }
 
 - (void)viewDidLoad
@@ -61,7 +63,11 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
         if (indexPath.row == 0)
         {
             QJAddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QJAddressTableViewCellIdent];
-            [cell changeLabelValue:_address];
+            if ([_name boolValue])
+            {
+                [cell changeLabelValue:_name withNumber:_phoneNumber address:_address];
+            }
+            
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         }
@@ -82,10 +88,11 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
     if (indexPath.section == 0 && indexPath.row ==0)
     {
         QJAddressSelectedViewController *controller = [[QJAddressSelectedViewController alloc] init];
-        controller.str = ^(NSString *str)
-        {
-            NSLog(@"%@",str); //拿到地址后 赋值给cell
-            _address = str;
+        controller.str = ^(NSString *name , NSString *phoneNumber, NSString *address)
+        {//拿到地址后 赋值给cell
+            _name = name;
+            _phoneNumber = phoneNumber;
+            _address = address;
             [tableView reloadData];
         };
         [self.navigationController pushViewController:controller animated:YES];

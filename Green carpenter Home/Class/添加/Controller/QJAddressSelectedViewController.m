@@ -79,17 +79,17 @@
 
 - (void)dealloc
 {
-    NSMutableString *str = [NSMutableString string];
-    for (int i = 0; i < 3; i++)
-    {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:i];
-        QJAddressSelectedTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-        [str appendString:cell.textField.text];
-        if (i != 2) {
-            [str appendString:@"\n"];
-        }
-    }
-    self.str(str);
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    QJAddressSelectedTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+
+    NSIndexPath *path2 = [NSIndexPath indexPathForRow:0 inSection:1];
+    QJAddressSelectedTableViewCell *cell2 = [self.tableView cellForRowAtIndexPath:path2];
+
+    NSIndexPath *path3 = [NSIndexPath indexPathForRow:0 inSection:2];
+    QJAddressSelectedTableViewCell *cell3 = [self.tableView cellForRowAtIndexPath:path3];
+    
+    self.str(cell.textField.text, cell2.textField.text, cell3.textField.text);
    
 }
 
