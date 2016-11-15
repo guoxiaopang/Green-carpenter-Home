@@ -21,6 +21,9 @@
 @end
 
 @implementation QJAddRightTableViewCell
+{
+    NSString *_number;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -48,8 +51,12 @@
         _ppButton.minValue = 0;
         _ppButton.maxValue = 99;
         _ppButton.delegate = self;
+        __weak typeof(self) weakSelf = self;
         _ppButton.numberBlock = ^(NSString *num){
-            NSLog(@"%@",num);
+            if ([weakSelf.delegate respondsToSelector:@selector(saveDate:number:)])
+            {
+                [weakSelf.delegate saveDate:weakSelf number:num];
+            }
         };
     }
     return _ppButton;
@@ -115,6 +122,7 @@
 
 - (void)PPNumberButton:(UIView *)numberButton number:(NSString *)number
 {
+    // 加减才会回调
     if ([self.delegate respondsToSelector:@selector(saveDate:number:)])
     {
         [self.delegate saveDate:self number:number];

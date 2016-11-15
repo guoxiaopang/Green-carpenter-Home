@@ -29,7 +29,7 @@
 - (void)addController
 {
     [self addController:[[QJOrderViewController alloc] init] title:@"订单" imageName:@"order" seletedImage:@"orderSelected"];
-    [self addController:[[QJAddViewController alloc] init] title:@"添加" imageName:@"add" seletedImage:@"addSelected"];
+    [self addController:[[QJAddViewController alloc] init] title:@"下单" imageName:@"add" seletedImage:@"addSelected"];
     [self addController:[[QJSearchViewController alloc] init] title:@"搜索" imageName:@"search" seletedImage:@"searchSelected"];
     [self addController:[[QJMyViewController alloc] init] title:@"我的" imageName:@"mine" seletedImage:@"mineSelected"];
     

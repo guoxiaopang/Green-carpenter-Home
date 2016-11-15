@@ -13,11 +13,12 @@
 #import "QJMenuModel.h"
 #import "QJAddRightTableViewCell.h"
 #import "QJAddBottomView.h"
+#import "QJAddOrderViewController.h"
 
 static  NSString *QJAddLeftTableViewCellIdent = @"QJAddLeftTableViewCellIdent";
 static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent";
 
-@interface QJAddViewController ()<UITableViewDelegate, UITableViewDataSource, QJAddRightTableViewCellDelegate>
+@interface QJAddViewController ()<UITableViewDelegate, UITableViewDataSource, QJAddRightTableViewCellDelegate, QJAddBottomViewDelegate>
 
 @property (nonatomic, strong) UITableView *leftTableView;
 @property (nonatomic, strong) UITableView *rightTableView;
@@ -35,7 +36,7 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"添加";
+    self.navigationItem.title = @"手动下单";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:self.leftTableView];
     [self.view addSubview:self.rightTableView];
@@ -52,7 +53,7 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
     if (!_bottomView)
     {
         _bottomView = [[QJAddBottomView alloc] init];
-//        _bottomView.backgroundColor = [UIColor yellowColor];
+        _bottomView.delegate = self;
     }
     return _bottomView;
 }
@@ -175,5 +176,12 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
         make.right.left.bottom.equalTo(self.view);
         make.height.equalTo(@44);
     }];
+}
+
+#pragma mark - QJAddBottomViewDelegate
+- (void)pushController:(QJAddBottomView *)view
+{
+    QJAddOrderViewController *controller = [[QJAddOrderViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 @end

@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class QJAddBottomView;
+@protocol QJAddBottomViewDelegate <NSObject>
+
+- (void)pushController:(QJAddBottomView *)view;
+
+@end
+
 @interface QJAddBottomView : UIView
+
+@property (nonatomic, weak)id<QJAddBottomViewDelegate> delegate;
 
 @end

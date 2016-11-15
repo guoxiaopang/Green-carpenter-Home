@@ -24,13 +24,15 @@
     self = [super init];
     if (self)
     {
-//        NSNotification *notifi = [[NSNotification alloc] initWithName:@"sale" object:nil userInfo:@{@"list" : self.saleArray}];
-//        [[NSNotificationCenter defaultCenter] postNotification:notifi];
-        [self.saleArray addObserver:self forKeyPath:@"count" options:NSKeyValueObservingOptionNew context:nil];
+
     }
     return self;
 }
 
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"saleArray"];
+}
 
 #pragma mark - left
 
@@ -141,17 +143,36 @@
         {
             // 里面已经存在 而且有相等的
             inModel.num = model.num;
+            [self postNotify];
             return;
         }
     }
     //执行到这里 说明里面没有相等的 有可能为空
     [self.saleArray addObject:model];
+    [self postNotify];
+}
+
+- (void)postNotify
+{
+    // 进行一个清理工作
+    NSArray *newArray = self.saleArray;
+    for (QJMenuModel *inModel in newArray)
+    {
+        if ([inModel.num isEqualToString:@"0"])
+        {
+            [self.saleArray removeObject:inModel];
+        }
+    }
+    newArray = nil;
+    
+    NSNotification *notifi = [[NSNotification alloc] initWithName:@"sale" object:nil userInfo:@{@"list" : self.saleArray}];
+    [[NSNotificationCenter defaultCenter] postNotification:notifi];
 }
 
 // 通知改变值
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
-{
-    NSLog(@"%@", keyPath);
-}
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+//{
+//    NSLog(@"keypath ==%@  object ==%@" ,keyPath, object );
+//}
 @end
