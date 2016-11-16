@@ -17,7 +17,7 @@
 
 static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 
-@interface QJOrderViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, QJOrderTitleViewDelegate, QJOrderDataManagerDelegate>
+@interface QJOrderViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UIActionSheetDelegate, QJOrderTitleViewDelegate, QJOrderDataManagerDelegate, QJOrderCollectionViewCellDelegate>
 
 @property (nonatomic, strong) QJOrderTitleView *selectView;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -28,6 +28,9 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 @end
 
 @implementation QJOrderViewController
+{
+    NSInteger _currStatus;
+}
 
 - (void)viewDidLoad
 {
@@ -39,10 +42,9 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
     
     [self.view addSubview:self.selectView];
     [self.view addSubview:self.collectionView];
-//    [self.dataManager requestData];
     
     self.collectionView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
-        [self.dataManager requestData];
+        [self.dataManager requestDataWithStatu:_currStatus];
     }];
     [self.collectionView .mj_header beginRefreshing];
 }
@@ -105,19 +107,20 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    return [self.dataManager numOfItem];
 }
 
 //返回行
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.dataManager numOfItem];
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     QJOrderCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:QJOrderViewIdent forIndexPath:indexPath];
-    QJOrderListModel *model = [self.dataManager modelWithIndex:indexPath.section];
+    QJOrderListModel *model = [self.dataManager modelWithIndex:indexPath.row];
+    cell.delegate = self;
     [cell reloadModel:model];
     return cell;
 }
@@ -134,9 +137,14 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
     {
         // 门店选择
     }
-    else if (index == 3)
+    else if (index == 2)
     {
         // 订单状态选择
+        
+        // 弹出一个选择器
+        UIActionSheet *sheetView = [[UIActionSheet alloc] initWithTitle:@"请选择订单状态" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"全部订单", @"已接单", @"未接单", nil];
+        [sheetView showInView:self.view];
+        
     }
 }
 
@@ -156,16 +164,39 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 
 }
 
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    _currStatus = buttonIndex;
+    // 0 全部订单 1已接单 2.未接单
+    [self.selectView setButtonTitle:buttonIndex];
+    
+    // 加载数据
+    [self.dataManager requestDataWithStatu:buttonIndex];
+}
 
 #pragma mark - QJOrderDataManagerDelegate
 - (void)requestSuccessfull:(QJOrderDataManager *)manager
 {
-    [self.collectionView reloadData];
-    [self.collectionView .mj_header endRefreshing];
+    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]]; // 这里有个bug  reloadData会报错
+    [self.collectionView.mj_header endRefreshing];
 }
 
 - (void)requestFaild:(QJOrderDataManager *)manager
 {
-    [self.collectionView .mj_header endRefreshing];
+    [self.collectionView.mj_header endRefreshing];
 }
+
+#pragma mark - QJOrderCollectionViewCell
+/// 点击接单
+- (void)clickOrder:(QJOrderCollectionViewCell *)cell
+{
+        NSLog(@"接单");
+}
+/// 点击取消订单
+- (void)cancelOrder:(QJOrderCollectionViewCell *)cell
+{
+        NSLog(@"取消订单");
+}
+
 @end

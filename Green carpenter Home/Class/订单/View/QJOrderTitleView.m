@@ -195,5 +195,21 @@ NSString *const orderAll = @"全部订单";
     [_timeButton setTitle:time forState:UIControlStateNormal];
 }
 
+- (void)setButtonTitle:(NSInteger)index
+{
+    if (index == 0)
+    {
+        [_orderStateButton setTitle:orderAll forState:UIControlStateNormal];
+    }
+    else if (index == 1)
+    {
+        [_orderStateButton setTitle:orderYes forState:UIControlStateNormal];
+    }
+    else if (index == 2)
+    {
+         [_orderStateButton setTitle:orderNO forState:UIControlStateNormal];
+    }
+}
+
 
 @end

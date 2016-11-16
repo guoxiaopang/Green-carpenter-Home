@@ -40,11 +40,11 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithHex:0Xdcdcdc];
     self.navigationItem.title = @"青匠之家";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setTableView];
-    [self.tableView addSubview:self.bottomView];
+    [self.view insertSubview:self.bottomView atIndex:6];
 }
 
 #pragma mark - 懒加载
@@ -76,7 +76,7 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
 
 - (void)setTableView
 {
-    self.tableView.frame = self.view.bounds;
+    self.tableView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
@@ -166,8 +166,10 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
     //收货人姓名 receiver_name
     //收货人地址 receiver_address
     //收货人手机号 receiver_phone || receiver_tel
-    //纬度   receiver_lat
-    //经度   receiver_lng
+    //纬度   receiver_lat   113.307223
+    //经度   receiver_lng   23.122083
+    
+    // 内容
 }
 
 

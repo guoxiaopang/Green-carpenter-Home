@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "QJOrderListModel.h"
 
+@class QJOrderCollectionViewCell;
+@protocol QJOrderCollectionViewCellDelegate <NSObject>
+
+/// 点击接单
+- (void)clickOrder:(QJOrderCollectionViewCell *)cell;
+/// 点击取消订单
+- (void)cancelOrder:(QJOrderCollectionViewCell *)cell;
+
+@end
 
 @interface QJOrderCollectionViewCell : UICollectionViewCell
 
+@property(nonatomic, weak)id<QJOrderCollectionViewCellDelegate> delegate;
 - (void)reloadModel:(QJOrderListModel *)model;
 
 @end

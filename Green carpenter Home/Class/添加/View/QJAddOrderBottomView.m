@@ -24,6 +24,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.button];
         [self addSubview:self.lineView];
         [self addLayout];

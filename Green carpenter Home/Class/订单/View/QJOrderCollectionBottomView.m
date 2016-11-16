@@ -21,6 +21,9 @@
 @end
 
 @implementation QJOrderCollectionBottomView
+{
+    NSInteger _status;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -48,6 +51,7 @@
         [_orderButton setBackgroundImage:[self imageWithColor:[UIColor colorWithHex:0x32CD32]] forState:UIControlStateNormal];
         _orderButton.layer.cornerRadius = 8.0f;
         _orderButton.clipsToBounds = YES;
+        [_orderButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
     }
     return _orderButton;
 }
@@ -62,6 +66,7 @@
         [_cancelButton setBackgroundImage:[self imageWithColor:[UIColor redColor]] forState:UIControlStateNormal];
         _cancelButton.layer.cornerRadius = 8.0f;
         _cancelButton.clipsToBounds = YES;
+        [_cancelButton addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;
 }
@@ -144,6 +149,53 @@
     if ([self.delegate respondsToSelector:@selector(callPhone:)])
     {
         [self.delegate callPhone:self];
+    }
+}
+
+- (void)clickButton
+{
+    if (_status == 1)
+    {
+        if([self.delegate respondsToSelector:@selector(printData:)])
+        {
+            [self.delegate printData:self];
+        }
+    }
+    else if (_status == 0)
+    {
+        if ([self.delegate respondsToSelector:@selector(orders:)])
+        {
+            [self.delegate orders:self];
+        }
+    }
+}
+
+- (void)cancelClick
+{
+    if ([self.delegate respondsToSelector:@selector(cancelOrder:)])
+    {
+        [self.delegate cancelOrder:self];
+    }
+}
+
+// 修改按钮状态
+- (void)setPrint:(NSInteger)index
+{
+    _status = index;
+    if(index == 1)
+    {
+        [_orderButton setTitle:@"打印" forState:UIControlStateNormal];
+        _orderButton.userInteractionEnabled = YES;
+    }
+    else if(index == 0)
+    {
+        [_orderButton setTitle:@"接单" forState:UIControlStateNormal];
+        _orderButton.userInteractionEnabled = YES;
+    }
+    else
+    {
+        [_orderButton setTitle:@"不可操作" forState:UIControlStateNormal];
+        _orderButton.userInteractionEnabled = NO;
     }
 }
 

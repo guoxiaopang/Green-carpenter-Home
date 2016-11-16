@@ -32,4 +32,6 @@ extern NSString *const orderAll;
 //订单状态
 @property (nonatomic, strong) NSString *orderState;
 
+- (void)setButtonTitle:(NSInteger)index;
+
 @end
