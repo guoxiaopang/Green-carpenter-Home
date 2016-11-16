@@ -115,7 +115,7 @@
     
     [_countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.bottom.equalTo(self);
-        make.width.equalTo(@50);
+        make.width.equalTo(@80);
     }];
 }
 
@@ -126,7 +126,7 @@
     NSArray *array = notify.userInfo[@"list"];
     _list = array;
     double count = 0;
-    NSInteger index;
+    NSInteger index = 0;
     for (QJMenuModel *model in array)
     {
         count += [model.price floatValue] * [model.num floatValue];

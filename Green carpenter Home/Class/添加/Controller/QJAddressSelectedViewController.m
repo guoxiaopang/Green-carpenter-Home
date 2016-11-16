@@ -34,8 +34,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:[QJAddressSelectedTableViewCell class] forCellReuseIdentifier:@"aa"];
-        _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.estimatedRowHeight = 60;
+        _tableView.rowHeight = 60.0f;
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.sectionFooterHeight = 5.0f;

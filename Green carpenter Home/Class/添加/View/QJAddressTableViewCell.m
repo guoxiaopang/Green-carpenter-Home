@@ -69,26 +69,17 @@
     return _contentLabel;
 }
 
-//- (void)changeLabelValue:(NSString *)str
-//{
-//    if (!str)
-//    {
-//        return;
-//    }
-//    _contentLabel.text = str;
-//    self.address = str;
-//}
 
 - (void)changeLabelValue:(NSString *)name withNumber:(NSString *)str address:(NSString *)add
 {
     NSMutableString *content = [NSMutableString string];
-    if ([name boolValue])
+    if (name.length)
     {
         [content appendString:name];
         [content appendString:@"\n"];
     }
     
-    if ([str boolValue])
+    if (str.length)
     {
         [content appendString:str];
         [content appendString:@"\n"];
