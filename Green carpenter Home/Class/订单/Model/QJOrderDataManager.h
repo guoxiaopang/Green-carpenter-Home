@@ -20,8 +20,6 @@
 @interface QJOrderDataManager : NSObject
 
 @property (nonatomic, weak)id<QJOrderDataManagerDelegate> delegate;
-//// 请求初始化数据
-//- (void)requestData;
 
 /// 返回个数
 - (NSInteger)numOfItem;

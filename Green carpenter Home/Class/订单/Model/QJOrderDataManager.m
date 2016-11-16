@@ -20,33 +20,6 @@
 
 @implementation QJOrderDataManager
 
-//- (void)requestData
-//{
-//    NSString *str = @"http://43.227.98.248:8080/ssm/order/list";
-//    [self.manager GET:str parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//
-//        NSArray *array = responseObject[@"result"];
-//        if ([array isKindOfClass:[NSArray class]])
-//        {
-//            [self.item removeAllObjects];
-//            for (NSDictionary *dict in array)
-//            {
-//                QJOrderListModel *model = [QJOrderListModel yy_modelWithDictionary:dict];
-//                [self.item addObject:model];
-//            }
-//        }
-//        if ([self.delegate respondsToSelector:@selector(requestSuccessfull:)])
-//        {
-//            [self.delegate requestSuccessfull:self];
-//        }
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"请求失败");
-//        if ([self.delegate respondsToSelector:@selector(requestFaild:)])
-//        {
-//            [self.delegate requestFaild:self];
-//        }
-//    }];
-//}
 
 - (AFHTTPSessionManager *)manager
 {
@@ -79,7 +52,6 @@
     }
     return nil;
 }
-
 
 - (void)requestDataWithStatu:(NSInteger)index
 {

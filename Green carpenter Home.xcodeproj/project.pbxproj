@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1388AFB0BD72FFC0BE57B072 /* libPods-Green carpenter Home.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD57F6F29CC5B41305EDE1 /* libPods-Green carpenter Home.a */; };
 		351384611DDBF61C00E4EBBD /* QJAddOrderBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 351384601DDBF61C00E4EBBD /* QJAddOrderBottomView.m */; };
+		351384641DDC490000E4EBBD /* QJSearchDatamanager.m in Sources */ = {isa = PBXBuildFile; fileRef = 351384631DDC490000E4EBBD /* QJSearchDatamanager.m */; };
 		3522A1C61DDAAA9800CB89C4 /* QJAddOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1C51DDAAA9800CB89C4 /* QJAddOrderViewController.m */; };
 		3522A1C91DDAB6ED00CB89C4 /* QJAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1C81DDAB6ED00CB89C4 /* QJAddressTableViewCell.m */; };
 		3522A1CC1DDABE4D00CB89C4 /* QJAddressSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1CB1DDABE4D00CB89C4 /* QJAddressSelectedViewController.m */; };
@@ -50,6 +51,8 @@
 		33CD57F6F29CC5B41305EDE1 /* libPods-Green carpenter Home.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Green carpenter Home.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3513845F1DDBF61C00E4EBBD /* QJAddOrderBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddOrderBottomView.h; sourceTree = "<group>"; };
 		351384601DDBF61C00E4EBBD /* QJAddOrderBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddOrderBottomView.m; sourceTree = "<group>"; };
+		351384621DDC490000E4EBBD /* QJSearchDatamanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJSearchDatamanager.h; sourceTree = "<group>"; };
+		351384631DDC490000E4EBBD /* QJSearchDatamanager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJSearchDatamanager.m; sourceTree = "<group>"; };
 		3522A1C41DDAAA9800CB89C4 /* QJAddOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddOrderViewController.h; sourceTree = "<group>"; };
 		3522A1C51DDAAA9800CB89C4 /* QJAddOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddOrderViewController.m; sourceTree = "<group>"; };
 		3522A1C71DDAB6ED00CB89C4 /* QJAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddressTableViewCell.h; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 		3587D6491DD9869100B46797 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				351384621DDC490000E4EBBD /* QJSearchDatamanager.h */,
+				351384631DDC490000E4EBBD /* QJSearchDatamanager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351384641DDC490000E4EBBD /* QJSearchDatamanager.m in Sources */,
 				3557245A1DD9B29B00B824ED /* NSString+PPNumberButton.m in Sources */,
 				3587D65A1DD98D8E00B46797 /* QJAddDataManager.m in Sources */,
 				358310AA1DD47ADD000B5CCB /* QJNavigationController.m in Sources */,
