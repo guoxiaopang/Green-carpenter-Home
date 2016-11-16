@@ -45,7 +45,7 @@
 {
     if (!_ppButton)
     {
-        CGRect rect = CGRectMake(CGRectGetWidth(self.frame) - 140, 30, 80, 20);
+        CGRect rect = CGRectZero;
         _ppButton = [[PPNumberButton alloc] initWithFrame:rect];
         _ppButton.shakeAnimation = YES;
         _ppButton.minValue = 0;
@@ -108,6 +108,14 @@
     [_priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
         make.bottom.equalTo(_iconView);
+    }];
+    
+    CGRectMake(CGRectGetWidth(self.frame) - 140, 30, 80, 20);
+    [_ppButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-10);
+        make.width.equalTo(@80);
+        make.height.equalTo(@20);
+        make.centerY.equalTo(_priceLabel);
     }];
 }
 

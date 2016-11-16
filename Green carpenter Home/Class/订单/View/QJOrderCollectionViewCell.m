@@ -424,7 +424,8 @@
 
 - (void)call
 {
-    NSURL *url = [NSURL URLWithString:_phoneNumber];
+    NSString *str = [NSString stringWithFormat:@"tel://%@",_phoneNumber];
+    NSURL *url = [NSURL URLWithString:str];
     if ([[UIApplication sharedApplication] canOpenURL:url])
     {
         [[UIApplication sharedApplication] openURL:url];

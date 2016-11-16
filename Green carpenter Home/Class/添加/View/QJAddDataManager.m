@@ -155,7 +155,7 @@
 - (void)postNotify
 {
     // 进行一个清理工作
-    NSArray *newArray = self.saleArray;
+    NSMutableArray *newArray = self.saleArray.copy;
     for (QJMenuModel *inModel in newArray)
     {
         if ([inModel.num isEqualToString:@"0"])

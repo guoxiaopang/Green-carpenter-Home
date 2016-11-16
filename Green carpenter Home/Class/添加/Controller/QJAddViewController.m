@@ -63,7 +63,7 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
     if (!_rightTableView)
     {
         _rightTableView = [[UITableView alloc] init];
-        _rightTableView.frame = CGRectMake(100, 0,CGRectGetWidth(self.view.frame) - 100, CGRectGetHeight(self.view.frame));
+        _rightTableView.frame = CGRectMake(100, 0,CGRectGetWidth(self.view.frame) - CGRectGetWidth(self.leftTableView.frame), CGRectGetHeight(self.view.frame));
         _rightTableView.delegate = self;
         _rightTableView.dataSource = self;
         [_rightTableView registerClass:[QJAddRightTableViewCell class] forCellReuseIdentifier:QJAddrightTableViewCellIdent];
