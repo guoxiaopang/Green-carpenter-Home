@@ -10,11 +10,21 @@
 #import "UIColor+QJColorHEX.h"
 #import "QJAddressTableViewCell.h"
 #import "QJAddressSelectedViewController.h"
+#import "QJTimeTableViewCell.h"
+#import "QJTimePickerView.h"
+#import "QJInfoTableViewCell.h"
+#import "QJAddOrderBottomView.h"
+#import "Masonry.h"
 
 static NSString *QJAddOrderViewControllerIdent = @"QJAddOrderViewControllerIdent";
 static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
-@interface QJAddOrderViewController ()<UITableViewDelegate, UITableViewDataSource>
+static NSString *QJTimeTableViewCellIdent = @"QJTimeTableViewCellIdent";
+static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
 
+@interface QJAddOrderViewController ()<UITableViewDelegate, UITableViewDataSource, QJAddOrderBottomViewDelegate>
+
+@property (nonatomic, strong) QJTimePickerView *timePickerView;
+@property (nonatomic, strong) QJAddOrderBottomView *bottomView;
 
 @end
 
@@ -23,6 +33,8 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
     NSString *_address;
     NSString *_phoneNumber;
     NSString *_name;
+    NSString *_time;
+    NSArray *_foodArray;
 }
 
 - (void)viewDidLoad
@@ -32,21 +44,51 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
     self.navigationItem.title = @"青匠之家";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setTableView];
+    [self.tableView addSubview:self.bottomView];
 }
 
 #pragma mark - 懒加载
+- (QJAddOrderBottomView *)bottomView
+{
+    if (!_bottomView)
+    {
+        _bottomView = [[QJAddOrderBottomView alloc] init];
+        _bottomView.delegate = self;
+        _bottomView.frame = CGRectMake(0, CGRectGetHeight(self.tableView.frame) - 44 - 44, CGRectGetWidth(self.view.frame), 44);
+    }
+    return _bottomView;
+}
+
+- (QJTimePickerView *)timePickerView
+{
+    if (!_timePickerView)
+    {
+        _timePickerView = [[QJTimePickerView alloc] init];
+        __weak typeof(self) weakSelf = self;
+        _timePickerView.str = ^(NSString *str)
+        {
+            _time = str;
+            [weakSelf.tableView reloadData];
+        };
+    }
+    return _timePickerView;
+}
+
 - (void)setTableView
 {
     self.tableView.frame = self.view.bounds;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:QJAddOrderViewControllerIdent];
-    [self.tableView registerClass:[QJAddressTableViewCell class] forCellReuseIdentifier:QJAddressTableViewCellIdent];
-    self.tableView.backgroundColor = [UIColor colorWithHex:0XE6E6E6];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
     self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:QJAddOrderViewControllerIdent];
+    [self.tableView registerClass:[QJAddressTableViewCell class] forCellReuseIdentifier:QJAddressTableViewCellIdent];
+    [self.tableView registerClass:[QJTimeTableViewCell class] forCellReuseIdentifier:QJTimeTableViewCellIdent];
+    [self.tableView registerClass:[QJInfoTableViewCell class] forCellReuseIdentifier:QJInfoTableViewCellIdent];
 }
 
-#pragma mark - 
+#pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
@@ -63,7 +105,7 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
         if (indexPath.row == 0)
         {
             QJAddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QJAddressTableViewCellIdent];
-            if ([_name boolValue])
+            if (_name.length || _address.length || _phoneNumber.length)
             {
                 [cell changeLabelValue:_name withNumber:_phoneNumber address:_address];
             }
@@ -71,7 +113,20 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         }
+        else
+        {
+            QJTimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QJTimeTableViewCellIdent];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            [cell reloadContent:_time];
+            return cell;
+        }
     }
+    else if (indexPath.section == 1)
+    {
+        QJInfoTableViewCell *info = [[QJInfoTableViewCell alloc] init];
+        return info;
+    }
+    
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QJAddOrderViewControllerIdent];
     return cell;
@@ -97,5 +152,31 @@ static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
         };
         [self.navigationController pushViewController:controller animated:YES];
     }
+    else if (indexPath.section == 0 && indexPath.row == 1)
+    {
+        [self.timePickerView show];
+    }
 }
+
+#pragma mark - QJAddOrderBottomViewDelegate
+- (void)determineCommit
+{
+    //订单金额 cargo_price
+    //期望取货时间 expected_fetch_time
+    //收货人姓名 receiver_name
+    //收货人地址 receiver_address
+    //收货人手机号 receiver_phone || receiver_tel
+    //纬度   receiver_lat
+    //经度   receiver_lng
+}
+
+
+- (void)foodArray:(NSArray *)foodArray
+{
+    // 订餐数组
+    NSLog(@"%@",foodArray);
+    _foodArray = foodArray;
+}
+
+
 @end

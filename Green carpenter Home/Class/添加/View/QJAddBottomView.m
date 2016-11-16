@@ -163,9 +163,9 @@
 
 - (void)click
 {
-    if ([self.delegate respondsToSelector:@selector(pushController:)])
+    if ([self.delegate respondsToSelector:@selector(pushController: foodArray:)])
     {
-        [self.delegate pushController:self];
+        [self.delegate pushController:self foodArray:_list];
     }
 }
 

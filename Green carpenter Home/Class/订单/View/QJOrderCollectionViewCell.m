@@ -51,9 +51,7 @@
     {
         self.layer.cornerRadius = 5.0f;
         self.clipsToBounds = YES;
-//        CGFloat width = [UIScreen mainScreen].bounds.size.width - 20 - 28;
-//        CGRect rect = CGRectMake(0, 0, width, 0);
-//        self.frame = rect;
+        self.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.nameLabel];
         [self.contentView addSubview:self.qianyueLabel];
@@ -69,6 +67,72 @@
         [self addLayout];
     }
     return self;
+}
+
+- (void)reloadModel:(QJOrderListModel *)model
+{
+    _nameLabel.text = model.receiver_name;
+    _qianyueLabel.text = [self status:model.status];
+    if (model.status == 0)
+    {
+        _qianyueLabel.textColor = self.tintColor;
+        _qianyueLabel.layer.borderColor = self.tintColor.CGColor;
+    }
+    else if(model.status == 1)
+    {
+        _qianyueLabel.textColor = [UIColor greenColor];
+        _qianyueLabel.layer.borderColor = [UIColor greenColor].CGColor;
+    }
+    else if (model.status == -1)
+    {
+        _qianyueLabel.textColor = [UIColor redColor];
+        _qianyueLabel.layer.borderColor = [UIColor redColor].CGColor;
+    }
+    _timeLabel.text = [self timeFormat:model.expected_fetch_time];
+    _totalPrice.text = [NSString stringWithFormat:@"合计 : %.2f元", model.cargo_price];
+    if ([model.receiver_phone boolValue])
+    {
+        _phoneNumber = model.receiver_phone;
+    }
+    else
+    {
+        _phoneNumber = model.receiver_tel;
+    }
+    _numberLabel.text = [NSString stringWithFormat:@"电话 : %@", _phoneNumber];
+    _addressLabel.text = [NSString stringWithFormat: @"地址 : %@", model.receiver_address];
+    _orderNumberLabel.text = [NSString stringWithFormat:@"订单号 : %@", model.order_id];
+}
+
+/// 返回格式化后时间
+- (NSString *)timeFormat:(long)time
+{
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"MM月dd日 HH时mm分";
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+    return [fmt stringFromDate:date];
+}
+
+- (NSString *)status:(NSInteger)index
+{
+    switch (index)
+    {
+        case 0:
+            return @"待接单";
+            break;
+        case 1:
+            return @"已接单";
+            break;
+        case -1:
+            return @"已取消";
+            break;
+        case 2:
+            return @"待评价";
+            break;
+        case 3:
+            return @"已完成";
+            break;
+    }
+    return @"未知状态";
 }
 
 #pragma mark - 懒加载
@@ -99,7 +163,7 @@
     if (!_orderNumberLabel)
     {
         _orderNumberLabel = [[UILabel alloc] init];
-        _orderNumberLabel.text = @"订单号 : 12345678";
+        _orderNumberLabel.text = @"订单号 : 000000";
         _orderNumberLabel.font = [UIFont systemFontOfSize:14];
         _orderNumberLabel.textColor = self.tintColor;
         _orderNumberLabel.userInteractionEnabled = YES;
@@ -128,7 +192,7 @@
         _totalPrice = [[UILabel alloc] init];
         _totalPrice.textColor = [UIColor redColor];
         _totalPrice.font = [UIFont systemFontOfSize:16];
-        _totalPrice.text = @"2份24元";
+        _totalPrice.text = @"0份0元";
     }
     return _totalPrice;
 }
@@ -141,7 +205,7 @@
         _addressLabel.textColor = [UIColor colorWithHex:0X635E63];
         _addressLabel.font = [UIFont systemFontOfSize:13];
         _addressLabel.numberOfLines = 0;
-        _addressLabel.text = @"地址 : 广州市黄浦区伴河路90号";
+        _addressLabel.text = @"地址 : ";
     }
     return _addressLabel;
 }
@@ -153,8 +217,7 @@
         _numberLabel = [[UILabel alloc] init];
         _numberLabel.textColor = [UIColor colorWithHex:0X635E63];
         _numberLabel.font = [UIFont systemFontOfSize:13];
-        _numberLabel.text = @"电话 : 13062356010";
-        _phoneNumber = @"13062356010";
+        _numberLabel.text = @"电话 : ";
         _numberLabel.userInteractionEnabled = YES;
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(numberLongPress:)];
         [_numberLabel addGestureRecognizer:longPress];
@@ -169,7 +232,7 @@
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textColor = [UIColor greenColor];
         _timeLabel.font = [UIFont systemFontOfSize:14];
-        _timeLabel.text = @"11月11号  11:20";
+        _timeLabel.text = @"时间未知";
     }
     return _timeLabel;
 }
@@ -194,7 +257,7 @@
     {
         _qianyueLabel = [[UILabel alloc] init];
         _qianyueLabel.font = [UIFont systemFontOfSize:12];
-        _qianyueLabel.text = @"已接单";
+        _qianyueLabel.text = @"未知状态";
         _qianyueLabel.textColor = self.tintColor;
         _qianyueLabel.layer.borderWidth = 1.0f;
         _qianyueLabel.layer.borderColor = self.tintColor.CGColor;
@@ -319,7 +382,6 @@
 // 订单号 长按复制
 - (void)orderLongPress
 {
-    NSLog(@"orderLongPress");
     [self becomeFirstResponder];// 不是在控制器中 需要注册第一响应者
     UIMenuController *menu = [UIMenuController sharedMenuController];
     CGRect rect = _orderNumberLabel.frame;
@@ -346,7 +408,6 @@
 {
     NSLog(@"copy");
     // 存储文字到剪切板
-//    NSString * str = [_numberLabel.text stringByReplacingOccurrencesOfString:@"电话 : " withString:@""];
     NSString *str = [_orderNumberLabel.text stringByReplacingOccurrencesOfString:@"订单号 : " withString:@""];
     [UIPasteboard generalPasteboard].string = str;
 }

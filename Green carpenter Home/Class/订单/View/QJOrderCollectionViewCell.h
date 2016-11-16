@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QJOrderListModel.h"
+
 
 @interface QJOrderCollectionViewCell : UICollectionViewCell
+
+- (void)reloadModel:(QJOrderListModel *)model;
 
 @end

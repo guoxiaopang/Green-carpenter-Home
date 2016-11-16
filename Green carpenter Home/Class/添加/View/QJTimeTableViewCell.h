@@ -1,5 +1,5 @@
 //
-//  QJAddOrderViewController.h
+//  QJTimeTableViewCell.h
 //  Green carpenter Home
 //
 //  Created by duoyi on 16/11/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QJAddOrderViewController : UITableViewController
+@interface QJTimeTableViewCell : UITableViewCell
 
-- (void)foodArray:(NSArray *)foodArray;
+- (void)reloadContent:(NSString *)str;
 
 @end

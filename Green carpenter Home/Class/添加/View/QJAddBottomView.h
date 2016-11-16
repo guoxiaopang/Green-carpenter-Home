@@ -11,7 +11,7 @@
 @class QJAddBottomView;
 @protocol QJAddBottomViewDelegate <NSObject>
 
-- (void)pushController:(QJAddBottomView *)view;
+- (void)pushController:(QJAddBottomView *)view foodArray:(NSArray *)array;
 
 @end
 

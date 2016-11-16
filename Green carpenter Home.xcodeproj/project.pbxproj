@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1388AFB0BD72FFC0BE57B072 /* libPods-Green carpenter Home.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD57F6F29CC5B41305EDE1 /* libPods-Green carpenter Home.a */; };
+		351384611DDBF61C00E4EBBD /* QJAddOrderBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 351384601DDBF61C00E4EBBD /* QJAddOrderBottomView.m */; };
 		3522A1C61DDAAA9800CB89C4 /* QJAddOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1C51DDAAA9800CB89C4 /* QJAddOrderViewController.m */; };
 		3522A1C91DDAB6ED00CB89C4 /* QJAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1C81DDAB6ED00CB89C4 /* QJAddressTableViewCell.m */; };
 		3522A1CC1DDABE4D00CB89C4 /* QJAddressSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1CB1DDABE4D00CB89C4 /* QJAddressSelectedViewController.m */; };
 		3522A1CF1DDAD61A00CB89C4 /* QJAddressSelectedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1CE1DDAD61A00CB89C4 /* QJAddressSelectedTableViewCell.m */; };
+		3522A1D21DDAE26500CB89C4 /* QJTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1D11DDAE26500CB89C4 /* QJTimePickerView.m */; };
+		3522A1D51DDAE3AC00CB89C4 /* QJTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1D41DDAE3AC00CB89C4 /* QJTimeTableViewCell.m */; };
+		3522A1D81DDB020400CB89C4 /* QJInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1D71DDB020400CB89C4 /* QJInfoTableViewCell.m */; };
+		3522A1DB1DDB0DF800CB89C4 /* QJOrderDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1DA1DDB0DF800CB89C4 /* QJOrderDataManager.m */; };
+		3522A1DE1DDB138700CB89C4 /* QJOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1DD1DDB138700CB89C4 /* QJOrderListModel.m */; };
 		355724491DD9A2F700B824ED /* QJMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724481DD9A2F700B824ED /* QJMenuModel.m */; };
 		3557244C1DD9A7F800B824ED /* QJAddRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557244B1DD9A7F800B824ED /* QJAddRightTableViewCell.m */; };
 		3557245A1DD9B29B00B824ED /* NSString+PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724571DD9B29B00B824ED /* NSString+PPNumberButton.m */; };
@@ -42,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		33CD57F6F29CC5B41305EDE1 /* libPods-Green carpenter Home.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Green carpenter Home.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3513845F1DDBF61C00E4EBBD /* QJAddOrderBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddOrderBottomView.h; sourceTree = "<group>"; };
+		351384601DDBF61C00E4EBBD /* QJAddOrderBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddOrderBottomView.m; sourceTree = "<group>"; };
 		3522A1C41DDAAA9800CB89C4 /* QJAddOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddOrderViewController.h; sourceTree = "<group>"; };
 		3522A1C51DDAAA9800CB89C4 /* QJAddOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddOrderViewController.m; sourceTree = "<group>"; };
 		3522A1C71DDAB6ED00CB89C4 /* QJAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddressTableViewCell.h; sourceTree = "<group>"; };
@@ -50,6 +58,16 @@
 		3522A1CB1DDABE4D00CB89C4 /* QJAddressSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddressSelectedViewController.m; sourceTree = "<group>"; };
 		3522A1CD1DDAD61A00CB89C4 /* QJAddressSelectedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddressSelectedTableViewCell.h; sourceTree = "<group>"; };
 		3522A1CE1DDAD61A00CB89C4 /* QJAddressSelectedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddressSelectedTableViewCell.m; sourceTree = "<group>"; };
+		3522A1D01DDAE26500CB89C4 /* QJTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJTimePickerView.h; sourceTree = "<group>"; };
+		3522A1D11DDAE26500CB89C4 /* QJTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJTimePickerView.m; sourceTree = "<group>"; };
+		3522A1D31DDAE3AC00CB89C4 /* QJTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJTimeTableViewCell.h; sourceTree = "<group>"; };
+		3522A1D41DDAE3AC00CB89C4 /* QJTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJTimeTableViewCell.m; sourceTree = "<group>"; };
+		3522A1D61DDB020400CB89C4 /* QJInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJInfoTableViewCell.h; sourceTree = "<group>"; };
+		3522A1D71DDB020400CB89C4 /* QJInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJInfoTableViewCell.m; sourceTree = "<group>"; };
+		3522A1D91DDB0DF800CB89C4 /* QJOrderDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJOrderDataManager.h; sourceTree = "<group>"; };
+		3522A1DA1DDB0DF800CB89C4 /* QJOrderDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJOrderDataManager.m; sourceTree = "<group>"; };
+		3522A1DC1DDB138700CB89C4 /* QJOrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJOrderListModel.h; sourceTree = "<group>"; };
+		3522A1DD1DDB138700CB89C4 /* QJOrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJOrderListModel.m; sourceTree = "<group>"; };
 		355724471DD9A2F700B824ED /* QJMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJMenuModel.h; sourceTree = "<group>"; };
 		355724481DD9A2F700B824ED /* QJMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJMenuModel.m; sourceTree = "<group>"; };
 		3557244A1DD9A7F800B824ED /* QJAddRightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddRightTableViewCell.h; sourceTree = "<group>"; };
@@ -218,6 +236,14 @@
 				3522A1C81DDAB6ED00CB89C4 /* QJAddressTableViewCell.m */,
 				3522A1CD1DDAD61A00CB89C4 /* QJAddressSelectedTableViewCell.h */,
 				3522A1CE1DDAD61A00CB89C4 /* QJAddressSelectedTableViewCell.m */,
+				3522A1D01DDAE26500CB89C4 /* QJTimePickerView.h */,
+				3522A1D11DDAE26500CB89C4 /* QJTimePickerView.m */,
+				3522A1D31DDAE3AC00CB89C4 /* QJTimeTableViewCell.h */,
+				3522A1D41DDAE3AC00CB89C4 /* QJTimeTableViewCell.m */,
+				3522A1D61DDB020400CB89C4 /* QJInfoTableViewCell.h */,
+				3522A1D71DDB020400CB89C4 /* QJInfoTableViewCell.m */,
+				3513845F1DDBF61C00E4EBBD /* QJAddOrderBottomView.h */,
+				351384601DDBF61C00E4EBBD /* QJAddOrderBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +383,10 @@
 		358BE0CE1DD4226500044A9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3522A1D91DDB0DF800CB89C4 /* QJOrderDataManager.h */,
+				3522A1DA1DDB0DF800CB89C4 /* QJOrderDataManager.m */,
+				3522A1DC1DDB138700CB89C4 /* QJOrderListModel.h */,
+				3522A1DD1DDB138700CB89C4 /* QJOrderListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -513,16 +543,20 @@
 				358310AA1DD47ADD000B5CCB /* QJNavigationController.m in Sources */,
 				3587D6461DD9684F00B46797 /* QJOrderCollectionBottomView.m in Sources */,
 				358310A11DD44ACC000B5CCB /* UIColor+QJColorHEX.m in Sources */,
+				351384611DDBF61C00E4EBBD /* QJAddOrderBottomView.m in Sources */,
 				3587D6571DD9888400B46797 /* QJAddViewController.m in Sources */,
 				3557244C1DD9A7F800B824ED /* QJAddRightTableViewCell.m in Sources */,
 				358BE0D31DD4226500044A9F /* main.m in Sources */,
+				3522A1DB1DDB0DF800CB89C4 /* QJOrderDataManager.m in Sources */,
 				3557245E1DD9BFEB00B824ED /* QJAddBottomView.m in Sources */,
 				358310AD1DD4962C000B5CCB /* UIImage+QJRadiuImage.m in Sources */,
 				358BE0D01DD4226500044A9F /* AppDelegate.m in Sources */,
 				3522A1CF1DDAD61A00CB89C4 /* QJAddressSelectedTableViewCell.m in Sources */,
 				358310A71DD465F1000B5CCB /* QJDatePickerView.m in Sources */,
 				358310B21DD496C2000B5CCB /* YYFPSLabel.m in Sources */,
+				3522A1D51DDAE3AC00CB89C4 /* QJTimeTableViewCell.m in Sources */,
 				3522A1CC1DDABE4D00CB89C4 /* QJAddressSelectedViewController.m in Sources */,
+				3522A1DE1DDB138700CB89C4 /* QJOrderListModel.m in Sources */,
 				358310B31DD496C2000B5CCB /* YYWeakProxy.m in Sources */,
 				358BE0DC1DD4233000044A9F /* QJOrderViewController.m in Sources */,
 				358310A41DD45E29000B5CCB /* QJOrderCollectionViewCell.m in Sources */,
@@ -532,6 +566,8 @@
 				3522A1C91DDAB6ED00CB89C4 /* QJAddressTableViewCell.m in Sources */,
 				3557245B1DD9B29B00B824ED /* PPNumberButton.m in Sources */,
 				3522A1C61DDAAA9800CB89C4 /* QJAddOrderViewController.m in Sources */,
+				3522A1D21DDAE26500CB89C4 /* QJTimePickerView.m in Sources */,
+				3522A1D81DDB020400CB89C4 /* QJInfoTableViewCell.m in Sources */,
 				358BE0D91DD4231000044A9F /* QJMyViewController.m in Sources */,
 				3587D64D1DD986A900B46797 /* QJSearchViewController.m in Sources */,
 				3587D65D1DD98F8D00B46797 /* QJAddLeftTableViewCell.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  QJAddOrderViewController.h
+//  QJTimePickerView.h
 //  Green carpenter Home
 //
 //  Created by duoyi on 16/11/15.
@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QJAddOrderViewController : UITableViewController
+typedef void(^dateString)(NSString *str);
+@interface QJTimePickerView : UIView
 
-- (void)foodArray:(NSArray *)foodArray;
+- (void)show;
+
+@property (nonatomic, copy) dateString str;
 
 @end

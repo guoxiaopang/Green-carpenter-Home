@@ -179,9 +179,10 @@ static  NSString *QJAddrightTableViewCellIdent = @"QJAddrightTableViewCellIdent"
 }
 
 #pragma mark - QJAddBottomViewDelegate
-- (void)pushController:(QJAddBottomView *)view
+- (void)pushController:(QJAddBottomView *)view foodArray:(NSArray *)array
 {
     QJAddOrderViewController *controller = [[QJAddOrderViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [controller foodArray:array];
     [self.navigationController pushViewController:controller animated:YES];
 }
 @end

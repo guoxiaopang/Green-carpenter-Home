@@ -11,15 +11,19 @@
 #import "UIColor+QJColorHEX.h"
 #import "QJOrderCollectionViewCell.h"
 #import "QJDatePickerView.h"
+#import "QJOrderDataManager.h"
+#import "QJOrderListModel.h"
+#import "MJRefresh.h"
 
 static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 
-@interface QJOrderViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, QJOrderTitleViewDelegate>
+@interface QJOrderViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, QJOrderTitleViewDelegate, QJOrderDataManagerDelegate>
 
 @property (nonatomic, strong) QJOrderTitleView *selectView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 //时间选择器
 @property (nonatomic, strong) QJDatePickerView *datePickerView;
+@property (nonatomic, strong) QJOrderDataManager *dataManager;
 
 @end
 
@@ -35,9 +39,25 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
     
     [self.view addSubview:self.selectView];
     [self.view addSubview:self.collectionView];
+//    [self.dataManager requestData];
+    
+    self.collectionView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
+        [self.dataManager requestData];
+    }];
+    [self.collectionView .mj_header beginRefreshing];
 }
 
 #pragma mark - 懒加载
+- (QJOrderDataManager *)dataManager
+{
+    if (!_dataManager)
+    {
+        _dataManager = [[QJOrderDataManager alloc] init];
+        _dataManager.delegate = self;
+    }
+    return _dataManager;
+}
+
 - (QJDatePickerView *)datePickerView
 {
     if (!_datePickerView)
@@ -91,13 +111,14 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 //返回行
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 19;
+    return [self.dataManager numOfItem];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     QJOrderCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:QJOrderViewIdent forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+    QJOrderListModel *model = [self.dataManager modelWithIndex:indexPath.section];
+    [cell reloadModel:model];
     return cell;
 }
 
@@ -135,4 +156,16 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 
 }
 
+
+#pragma mark - QJOrderDataManagerDelegate
+- (void)requestSuccessfull:(QJOrderDataManager *)manager
+{
+    [self.collectionView reloadData];
+    [self.collectionView .mj_header endRefreshing];
+}
+
+- (void)requestFaild:(QJOrderDataManager *)manager
+{
+    [self.collectionView .mj_header endRefreshing];
+}
 @end
