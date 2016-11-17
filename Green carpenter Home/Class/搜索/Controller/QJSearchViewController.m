@@ -108,14 +108,14 @@ static NSString *QJSearchViewControllerIdent = @"QJSearchViewControllerIdent";
 
 #pragma mark - QJOrderCollectionViewCell
 /// 点击接单
-- (void)clickOrder:(QJOrderCollectionViewCell *)cell
+- (void)clickOrder:(QJOrderCollectionViewCell *)cell orderNumber:(NSString *)number;
 {
-    NSLog(@"接单");
+    NSLog(@"搜索接单");
 }
 /// 点击取消订单
 - (void)cancelOrder:(QJOrderCollectionViewCell *)cell orderNumber:(NSString *)number
 {
-    NSLog(@"取消订单");
+    NSLog(@"搜索取消订单");
     [self.dataManager cancelOrdersWithNumber:number];
 }
 

@@ -456,9 +456,9 @@
 /// 接单操作
 - (void)orders:(QJOrderCollectionBottomView *)view
 {
-    if ([self.delegate respondsToSelector:@selector(clickOrder:)])
+    if ([self.delegate respondsToSelector:@selector(clickOrder: orderNumber:)])
     {
-        [self.delegate clickOrder:self];
+        [self.delegate clickOrder:self orderNumber:_orderNum];
     }
 }
 /// 打印操作
