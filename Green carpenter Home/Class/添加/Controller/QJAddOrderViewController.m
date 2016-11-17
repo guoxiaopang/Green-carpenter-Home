@@ -15,11 +15,13 @@
 #import "QJInfoTableViewCell.h"
 #import "QJAddOrderBottomView.h"
 #import "Masonry.h"
+#import "QJADDOrderContentCollectionViewCell.h"
 
 static NSString *QJAddOrderViewControllerIdent = @"QJAddOrderViewControllerIdent";
 static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
 static NSString *QJTimeTableViewCellIdent = @"QJTimeTableViewCellIdent";
 static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
+static NSString *QJADDOrderContentCollectionViewCellIdent = @"QJADDOrderContentCollectionViewCellIdent";
 
 @interface QJAddOrderViewController ()<UITableViewDelegate, UITableViewDataSource, QJAddOrderBottomViewDelegate>
 
@@ -40,7 +42,7 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithHex:0Xdcdcdc];
+
     self.navigationItem.title = @"青匠之家";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setTableView];
@@ -77,7 +79,7 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
 - (void)setTableView
 {
     self.tableView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor colorWithHex:0xe3e3e3];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
     self.tableView.tableFooterView = [[UIView alloc] init];
@@ -86,6 +88,8 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
     [self.tableView registerClass:[QJAddressTableViewCell class] forCellReuseIdentifier:QJAddressTableViewCellIdent];
     [self.tableView registerClass:[QJTimeTableViewCell class] forCellReuseIdentifier:QJTimeTableViewCellIdent];
     [self.tableView registerClass:[QJInfoTableViewCell class] forCellReuseIdentifier:QJInfoTableViewCellIdent];
+    [self.tableView registerClass:[QJADDOrderContentCollectionViewCell class] forCellReuseIdentifier:QJADDOrderContentCollectionViewCellIdent];
+    
 }
 
 #pragma mark -
@@ -104,6 +108,7 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
     {
         if (indexPath.row == 0)
         {
+            // 地址
             QJAddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QJAddressTableViewCellIdent];
             if (_name.length || _address.length || _phoneNumber.length)
             {
@@ -115,16 +120,25 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
         }
         else
         {
+            // 时间
             QJTimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QJTimeTableViewCellIdent];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             [cell reloadContent:_time];
             return cell;
         }
     }
+    else if (indexPath.section == 2)
+    {
+        // 备注
+        QJInfoTableViewCell *info = [tableView dequeueReusableCellWithIdentifier:QJInfoTableViewCellIdent];
+        return info;
+    }
     else if (indexPath.section == 1)
     {
-        QJInfoTableViewCell *info = [[QJInfoTableViewCell alloc] init];
-        return info;
+        // 内容
+        QJADDOrderContentCollectionViewCell *contentCell = [tableView dequeueReusableCellWithIdentifier:QJADDOrderContentCollectionViewCellIdent];
+        contentCell.foodArray = _foodArray;
+        return contentCell;
     }
     
     
@@ -159,6 +173,7 @@ static NSString *QJInfoTableViewCellIdent = @"QJInfoTableViewCellIdent";
 }
 
 #pragma mark - QJAddOrderBottomViewDelegate
+// 确定提交订单
 - (void)determineCommit
 {
     //订单金额 cargo_price

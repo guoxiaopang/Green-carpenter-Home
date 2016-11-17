@@ -96,4 +96,22 @@
     }
     return nil;
 }
+
+- (void)cancelOrdersWithNumber:(NSString *)numberStr;
+{
+    NSString *str = @"http://43.227.98.248:8080/ssm/order/cancel/saler";
+    NSDictionary *param = @{@"order_id" : numberStr, @"cancel_reason_id" : [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]]};
+    [self.manager GET:str parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([self.delegate respondsToSelector:@selector(requestSuccessfull:)])
+        {
+            [self.delegate requestSuccessfull:self];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"取消订单失败");
+        if ([self.delegate respondsToSelector:@selector(requestFaild:)])
+        {
+            [self.delegate requestFaild:self];
+        }
+    }];
+}
 @end

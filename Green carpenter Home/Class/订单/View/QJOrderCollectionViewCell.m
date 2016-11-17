@@ -42,6 +42,7 @@
 @implementation QJOrderCollectionViewCell
 {
     NSString *_phoneNumber;
+    NSString *_orderNum;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -101,6 +102,7 @@
     _numberLabel.text = [NSString stringWithFormat:@"电话 : %@", _phoneNumber];
     _addressLabel.text = [NSString stringWithFormat: @"地址 : %@", model.receiver_address];
     _orderNumberLabel.text = [NSString stringWithFormat:@"订单号 : %@", model.order_id];
+    _orderNum = model.order_id;
     
     //设置按钮状态
     [self.buttomView setPrint:model.status];
@@ -338,7 +340,7 @@
     
     [_orderNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_numberLabel);
-        make.width.equalTo(@150);
+        make.width.equalTo(@(width));
         make.top.equalTo(_addressLabel.mas_bottom).offset(5);
     }];
     
@@ -468,9 +470,9 @@
 /// 取消订单
 - (void)cancelOrder:(QJOrderCollectionBottomView *)view
 {
-    if ([self.delegate respondsToSelector:@selector(cancelOrder:)])
+    if ([self.delegate respondsToSelector:@selector(cancelOrder: orderNumber:)])
     {
-        [self.delegate cancelOrder:self];
+        [self.delegate cancelOrder:self orderNumber:_orderNum];
     }
 }
 @end

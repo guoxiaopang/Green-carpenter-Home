@@ -19,7 +19,9 @@
 @end
 
 @implementation QJOrderDataManager
-
+{
+    NSInteger _index;
+}
 
 - (AFHTTPSessionManager *)manager
 {
@@ -55,6 +57,7 @@
 
 - (void)requestDataWithStatu:(NSInteger)index
 {
+    _index = index;
     NSString *status;
     if (index == 0)
     {
@@ -102,6 +105,24 @@
         }
     }];
 
+}
+
+- (void)cancelOrdersWithNumber:(NSString *)numberStr
+{
+    NSString *str = @"http://43.227.98.248:8080/ssm/order/cancel/saler";
+    NSDictionary *param = @{@"order_id" : numberStr, @"cancel_reason_id" : [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]]};
+    [self.manager GET:str parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        // 刷新订单
+        [self requestDataWithStatu:_index];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"取消订单失败");
+        if ([self.delegate respondsToSelector:@selector(requestFaild:)])
+        {
+            [self.delegate requestFaild:self];
+        }
+    }];
 }
 
 

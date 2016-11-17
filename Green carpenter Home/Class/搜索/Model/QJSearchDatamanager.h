@@ -27,4 +27,8 @@
 
 - (void)requestData:(NSString *)str;
 
+
+/// 取消订单
+- (void)cancelOrdersWithNumber:(NSString *)numberStr;
+
 @end

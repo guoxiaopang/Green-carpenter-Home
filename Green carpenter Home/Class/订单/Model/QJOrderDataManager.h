@@ -29,4 +29,8 @@
 /// 根据订单状态加载数据
 - (void)requestDataWithStatu:(NSInteger)index;
 
+/// 取消订单
+- (void)cancelOrdersWithNumber:(NSString *)numberStr;
+
+
 @end

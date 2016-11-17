@@ -13,9 +13,9 @@
 @protocol QJOrderCollectionViewCellDelegate <NSObject>
 
 /// 点击接单
-- (void)clickOrder:(QJOrderCollectionViewCell *)cell;
+- (void)clickOrder:(QJOrderCollectionViewCell *)cell ;
 /// 点击取消订单
-- (void)cancelOrder:(QJOrderCollectionViewCell *)cell;
+- (void)cancelOrder:(QJOrderCollectionViewCell *)cell orderNumber:(NSString *)number;
 
 @end
 

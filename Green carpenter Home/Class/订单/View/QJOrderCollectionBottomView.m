@@ -11,7 +11,7 @@
 #import "Masonry.h"
 #import "UIColor+QJColorHEX.h"
 
-@interface QJOrderCollectionBottomView()
+@interface QJOrderCollectionBottomView()<UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) UIButton *callButton;
@@ -172,9 +172,19 @@
 
 - (void)cancelClick
 {
-    if ([self.delegate respondsToSelector:@selector(cancelOrder:)])
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定取消吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [view show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
     {
-        [self.delegate cancelOrder:self];
+        // 确定取消
+        if ([self.delegate respondsToSelector:@selector(cancelOrder:)])
+        {
+            [self.delegate cancelOrder:self];
+        }
     }
 }
 
