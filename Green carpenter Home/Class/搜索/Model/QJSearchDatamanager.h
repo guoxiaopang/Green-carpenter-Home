@@ -30,5 +30,7 @@
 
 /// 取消订单
 - (void)cancelOrdersWithNumber:(NSString *)numberStr;
+/// 接单
+- (void)receiveOrderWithNumber:(NSString *)numberStr;
 
 @end

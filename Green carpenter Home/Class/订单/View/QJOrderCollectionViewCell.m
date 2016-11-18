@@ -113,7 +113,7 @@
 {
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateFormat = @"MM月dd日 HH时mm分";
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:time/1000];
     return [fmt stringFromDate:date];
 }
 
@@ -377,8 +377,9 @@
         _phoneNumber = str;
         alertView.message = str;
         alertView.delegate = self;
-        [alertView addButtonWithTitle:@"确定"];
         [alertView addButtonWithTitle:@"取消"];
+        [alertView addButtonWithTitle:@"确定"];
+        
         [alertView show];
     }
 
@@ -418,7 +419,7 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0)
 {
-    if (buttonIndex == 0)
+    if (buttonIndex == 1)
     {
         [self call];
     }
@@ -448,8 +449,9 @@
     _phoneNumber = str;
     alertView.message = str;
     alertView.delegate = self;
-    [alertView addButtonWithTitle:@"确定"];
     [alertView addButtonWithTitle:@"取消"];
+    [alertView addButtonWithTitle:@"确定"];
+    
     [alertView show];
 }
 

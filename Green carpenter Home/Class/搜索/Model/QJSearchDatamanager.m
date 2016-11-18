@@ -114,4 +114,9 @@
         }
     }];
 }
+
+- (void)receiveOrderWithNumber:(NSString *)numberStr
+{
+    NSLog(@"搜索接单");
+}
 @end

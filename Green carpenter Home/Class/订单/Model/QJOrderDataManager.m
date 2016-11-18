@@ -125,5 +125,10 @@
     }];
 }
 
+- (void)receiveOrderWithNumber:(NSString *)numberStr
+{
+    NSLog(@"接单网络发送");
+}
+
 
 @end

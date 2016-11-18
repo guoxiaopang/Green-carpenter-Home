@@ -192,7 +192,7 @@ static NSString *QJOrderViewIdent = @"QJOrderViewIdent";
 - (void)clickOrder:(QJOrderCollectionViewCell *)cell orderNumber:(NSString *)number;
 {
     // 发送接单的网络请求
-    NSLog(@"aaa");
+    [self.dataManager receiveOrderWithNumber:number];
 }
 /// 点击取消订单
 - (void)cancelOrder:(QJOrderCollectionViewCell *)cell orderNumber:(NSString *)number

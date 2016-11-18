@@ -110,7 +110,8 @@ static NSString *QJSearchViewControllerIdent = @"QJSearchViewControllerIdent";
 /// 点击接单
 - (void)clickOrder:(QJOrderCollectionViewCell *)cell orderNumber:(NSString *)number;
 {
-    NSLog(@"搜索接单");
+    
+    [self.dataManager receiveOrderWithNumber:number];
 }
 /// 点击取消订单
 - (void)cancelOrder:(QJOrderCollectionViewCell *)cell orderNumber:(NSString *)number
