@@ -16,6 +16,8 @@
 #import "QJAddOrderBottomView.h"
 #import "Masonry.h"
 #import "QJADDOrderContentCollectionViewCell.h"
+#import "QJMenuModel.h"
+#import "QJAddOrderDatamanager.h"
 
 static NSString *QJAddOrderViewControllerIdent = @"QJAddOrderViewControllerIdent";
 static NSString *QJAddressTableViewCellIdent = @"QJAddressTableViewCellIdent";
@@ -27,6 +29,7 @@ static NSString *QJADDOrderContentCollectionViewCellIdent = @"QJADDOrderContentC
 
 @property (nonatomic, strong) QJTimePickerView *timePickerView;
 @property (nonatomic, strong) QJAddOrderBottomView *bottomView;
+@property (nonatomic, strong) QJAddOrderDatamanager *dataManager;
 
 @end
 
@@ -47,9 +50,19 @@ static NSString *QJADDOrderContentCollectionViewCellIdent = @"QJADDOrderContentC
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setTableView];
     [self.view insertSubview:self.bottomView atIndex:6];
+    
 }
 
 #pragma mark - 懒加载
+- (QJAddOrderDatamanager *)dataManager
+{
+    if (!_dataManager)
+    {
+        _dataManager = [[QJAddOrderDatamanager alloc] init];
+    }
+    return _dataManager;
+}
+
 - (QJAddOrderBottomView *)bottomView
 {
     if (!_bottomView)
@@ -172,6 +185,11 @@ static NSString *QJADDOrderContentCollectionViewCellIdent = @"QJADDOrderContentC
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self closeKeyboard];
+}
+
 #pragma mark - QJAddOrderBottomViewDelegate
 // 确定提交订单
 - (void)determineCommit
@@ -185,6 +203,39 @@ static NSString *QJADDOrderContentCollectionViewCellIdent = @"QJADDOrderContentC
     //经度   receiver_lng   23.122083
     
     // 内容
+    
+    NSString *time = [self dateWithStrint];
+    NSString *name = _name;
+    NSString *address = _address;
+    NSString *receiver_phone = _phoneNumber;
+    NSString *receiver_tel = @"";
+    NSString *receiver_lat = @"113.307223";
+    NSString *receiver_lng = @"23.122083";
+    
+    double price = 0;
+    NSMutableArray *contentArray = [NSMutableArray array];
+    for (QJMenuModel *model in _foodArray)
+    {
+        price += ([model.num integerValue] * [model.price doubleValue]);
+        NSDictionary *dict = @{@"id":model.id,@"num":model.num};
+        [contentArray addObject:dict];
+    }
+    
+    NSString *priceStr = [NSString stringWithFormat:@"%.2f", price];
+    
+    [self.dataManager submitOrderPrice:priceStr expected_fetch_time:time receiver_name:name receiver_address:address receiver_phone:receiver_phone receiver_tel:receiver_tel receiver_lat:receiver_lat receiver_lng:receiver_lng content:contentArray];
+    
+#warning 备注没有传
+}
+
+// 时间转时间搓
+- (NSString *)dateWithStrint
+{
+    NSDateFormatter * fmt = [[NSDateFormatter alloc]init];
+    fmt.dateFormat = @"HH:mm:ss";
+    NSDate *d1 = [fmt dateFromString:_time];
+    double time = [d1 timeIntervalSince1970];
+    return [NSString stringWithFormat:@"%.0f", time];
 }
 
 
@@ -194,6 +245,13 @@ static NSString *QJADDOrderContentCollectionViewCellIdent = @"QJADDOrderContentC
     NSLog(@"%@",foodArray);
     _foodArray = foodArray;
 }
+
+- (void)closeKeyboard
+{
+    [self.view endEditing:YES];
+}
+
+
 
 
 @end

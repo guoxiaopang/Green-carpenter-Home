@@ -17,7 +17,9 @@
 - (NSInteger)numOfRight:(NSInteger)leftIndex;
 - (QJMenuModel *)modelWithIndex:(NSInteger)index leftNumber:(NSInteger)leftIndex;
 
-// 改变数量
+/// 改变数量
 - (void)changeModelNum:(QJMenuModel *)model number:(NSString *)number;
+
+
 
 @end

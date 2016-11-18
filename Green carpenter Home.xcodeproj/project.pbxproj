@@ -19,6 +19,7 @@
 		3522A1D81DDB020400CB89C4 /* QJInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1D71DDB020400CB89C4 /* QJInfoTableViewCell.m */; };
 		3522A1DB1DDB0DF800CB89C4 /* QJOrderDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1DA1DDB0DF800CB89C4 /* QJOrderDataManager.m */; };
 		3522A1DE1DDB138700CB89C4 /* QJOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3522A1DD1DDB138700CB89C4 /* QJOrderListModel.m */; };
+		3535DDE81DDE9EB7008E5B74 /* QJAddOrderDatamanager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3535DDE71DDE9EB7008E5B74 /* QJAddOrderDatamanager.m */; };
 		355724491DD9A2F700B824ED /* QJMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724481DD9A2F700B824ED /* QJMenuModel.m */; };
 		3557244C1DD9A7F800B824ED /* QJAddRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557244B1DD9A7F800B824ED /* QJAddRightTableViewCell.m */; };
 		3557245A1DD9B29B00B824ED /* NSString+PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 355724571DD9B29B00B824ED /* NSString+PPNumberButton.m */; };
@@ -72,6 +73,8 @@
 		3522A1DA1DDB0DF800CB89C4 /* QJOrderDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJOrderDataManager.m; sourceTree = "<group>"; };
 		3522A1DC1DDB138700CB89C4 /* QJOrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJOrderListModel.h; sourceTree = "<group>"; };
 		3522A1DD1DDB138700CB89C4 /* QJOrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJOrderListModel.m; sourceTree = "<group>"; };
+		3535DDE61DDE9EB7008E5B74 /* QJAddOrderDatamanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddOrderDatamanager.h; sourceTree = "<group>"; };
+		3535DDE71DDE9EB7008E5B74 /* QJAddOrderDatamanager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAddOrderDatamanager.m; sourceTree = "<group>"; };
 		355724471DD9A2F700B824ED /* QJMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJMenuModel.h; sourceTree = "<group>"; };
 		355724481DD9A2F700B824ED /* QJMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJMenuModel.m; sourceTree = "<group>"; };
 		3557244A1DD9A7F800B824ED /* QJAddRightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAddRightTableViewCell.h; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 				3587D65E1DD99F3700B46797 /* dishes.PLIST */,
 				355724471DD9A2F700B824ED /* QJMenuModel.h */,
 				355724481DD9A2F700B824ED /* QJMenuModel.m */,
+				3535DDE61DDE9EB7008E5B74 /* QJAddOrderDatamanager.h */,
+				3535DDE71DDE9EB7008E5B74 /* QJAddOrderDatamanager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				351384641DDC490000E4EBBD /* QJSearchDatamanager.m in Sources */,
 				3557245A1DD9B29B00B824ED /* NSString+PPNumberButton.m in Sources */,
 				35FA7C7E1DDD8A23001A5D36 /* QJADDOrderContentCollectionViewCell.m in Sources */,
+				3535DDE81DDE9EB7008E5B74 /* QJAddOrderDatamanager.m in Sources */,
 				3587D65A1DD98D8E00B46797 /* QJAddDataManager.m in Sources */,
 				358310AA1DD47ADD000B5CCB /* QJNavigationController.m in Sources */,
 				3587D6461DD9684F00B46797 /* QJOrderCollectionBottomView.m in Sources */,
